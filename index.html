@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chytré já – Tvůj digitální vesmír</title>
+
+    <!-- Font Awesome 6 Free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Hlavní CSS – opravené cesty -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/typography.css">
+    <link rel="stylesheet" href="./assets/css/onas.css">
+    <link rel="stylesheet" href="./assets/css/pricing.css">
+    <link rel="stylesheet" href="./assets/css/founders.css">
+    <link rel="stylesheet" href="./assets/css/contact.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/cookies.css">
+    <link rel="stylesheet" href="./assets/css/cj-widget.css">
+    <link rel="stylesheet" href="./assets/css/landing.css">
+    <!-- Knihovny -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+    <!-- ENV 
+    <script type="module" src="../core/js/env.js"></script> -->
+</head>
+
+<body>
+
+    <!-- ===== MENU ===== -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">🌌 Chytré já</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="medioteka.html">Mediotéka</a></li>
+                <li><a href="/founders/founders.html">Zakladatelé</a></li>
+                <li><a href="#faq-chat">Zeptejte se</a></li>
+                <li><a href="#cenik">Ceník</a></li>
+                <li><a href="#onas">O nás</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+
+            <a href="app.html" class="login-btn">Přihlásit</a>
+
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HLAVIČKA ===== -->
+    <header class="hero-section">
+        <div class="container hero-center">
+            <h1>🌌 Chytré já</h1>
+
+            <p class="section-subtitle">
+                Tvé druhé, digitální já. Pomáhá ti správně se rozhodovat, řešit úkoly
+                a fungovat chytřeji doma i v práci.
+            </p>
+
+            <!-- Opravený odkaz do Universe 
+            <a href="../public/universe/universe.html" class="btn-primary hero-btn">
+                Vstoupit do vesmíru
+            </a> -->
+        </div>
+    </header>
+
+    <section id="universe-preview">
+        <object data="assets/svg/universe.svg" type="image/svg+xml"></object>
+    </section>
+
+    <!-- ===== PROČ VZNIKLO CHYTRÉ JÁ ===== -->
+    <section id="proc-chytre-ja" class="about-section alt-bg">
+        <h2>🚀 Budoucnost patří inteligentním průvodcům</h2>
+
+        <p class="proc-intro">
+            Chytré já jsme vytvořili jako inteligentní ekosystém — propojuje zdraví, energii, výkon i práci
+            a vede vás každý den správným směrem.
+        </p>
+
+        <div class="proc-grid">
+            <div class="proc-card">
+                <i class="fa-solid fa-brain"></i>
+                <h3>AI jako superinteligence</h3>
+                <p>AI už není jen nástroj. Je to průvodce, který pomáhá chápat priority a dělat lepší rozhodnutí.</p>
+            </div>
+
+            <div class="proc-card">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h3>Medicína ukazuje cestu</h3>
+                <p>Nejde o množství dat, ale o jejich výklad. Chytré já dává jasné kroky, co zlepšit právě teď.</p>
+            </div>
+
+            <div class="proc-card">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h3>Adaptivní učení i práce</h3>
+                <p>Budoucnost patří systémům, které se přizpůsobují člověku. Chytré já funguje doma i ve firmě.</p>
+            </div>
+
+            <div class="proc-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Důvěra jako hodnota</h3>
+                <p>Důvěra vzniká tam, kde je směr jasný. Chytré já nepřekáží — jen pomáhá vidět priority.</p>
+            </div>
+        </div>
+
+        <p class="proc-footer" style="color:#60a5fa;">
+            Chytré já je jako vesmír, který spojuje váš život i vaši práci — a každý den vám ukazuje další správný krok.
+        </p>
+    </section>
+
+    <!-- ===== CENÍK ===== -->
+    <section id="cenik" class="alt-bg">
+        <h2>💎 Plány a ceny</h2>
+
+        <p class="proc-intro">
+            Každý tarif otevírá jinou část vašeho digitálního vesmíru.
+            Vyberte si, jak hluboko až chcete jít.
+        </p>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>🚀 Start</h3>
+                <div class="price">Zdarma</div>
+                <p>Základní přístup do Universe, hlasové příkazy a ukázkové moduly.</p>
+                <ul>
+                    <li><span class="ok">✔</span> Základní Universe</li>
+                    <li><span class="ok">✔</span> Základní AI chat</li>
+                    <li><span class="ok">✔</span> Ukázkové uzly</li>
+                </ul>
+                <button class="btn">Začít</button>
+            </div>
+
+            <div class="pricing-card pro-card">
+                <div class="badge-top">NEJOBLÍBENĚJŠÍ</div>
+                <h3>✨ Pro</h3>
+                <div class="price">490 Kč / měsíc</div>
+                <p>Plná síla Chytrého já: všechny moduly, vizualizace, plánování a AI modely.</p>
+                <ul>
+                    <li><span class="ok">✔</span> Vše ze Startu</li>
+                    <li><span class="ok">✔</span> Plný Universe</li>
+                    <li><span class="ok">✔</span> Dashboardy</li>
+                    <li><span class="ok">✔</span> Integrace</li>
+                </ul>
+                <button class="btn primary">Aktivovat</button>
+            </div>
+
+            <div class="pricing-card">
+                <h3>🏢 Enterprise</h3>
+                <div class="price">Na dotaz</div>
+                <p>Integrace, firemní API, týmové licence.</p>
+                <button class="btn">Kontaktovat</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOUNDERS CTA ===== 
+    <section id="founders-cta" class="founders-cta-section">
+        <div class="founders-cta-box">
+            <h3>🌌 Odemkněte celý vesmír jako Zakladatelé</h3>
+            <p>
+                Doživotní přístup ke všem modulům a funkcím.
+            </p>
+
+            <a href="../core/founders/founders.html" class="founders-cta-btn">
+                Zjistit více
+            </a>
+        </div>
+    </section> -->
+    <!-- ===== O NÁS ===== -->
+    <section id="onas" class="about-section onas-box">
+        <h2>🌠 O nás</h2>
+        <div class="onas-text">
+            <p> Začínali jsme v průmyslu s plánováním výroby tam, kde na to běžné systémy nestačily. </p>
+            <p> Dnes vytváříme Chytré já – prostor pro průtokové řízení (TOC) s využitím moderních technologií včetně
+                AI. Pomáháme tak lidem i firmám vidět celý svůj vesmír jasně, jednoduše a chytře. </p>
+        </div> <!-- ČASOVÁ OSA -->
+        <div class="history-timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>2018 — Začátky v průmyslu</h4>
+                    <p>První algoritmy pro plánování výroby tam, kde selhávaly běžné ERP systémy.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>2020 — Tvorba vlastních modelů</h4>
+                    <p>Vzniká modelování toků, úzkých míst a predikce výsledků pro reálné firmy.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>2023 — Zrození Chytrého Já</h4>
+                    <p>Začínáme spojovat umělou inteligenci s firemní logikou a procesy.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>2025 — Digitální vesmír</h4>
+                    <p>Chytré Já se mění ve vizuální ekosystém. Universe, AI, modely a moduly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KONTAKT ===== -->
+    <section id="kontakt" class="alt-bg">
+        <h2>📞 Kontaktujte nás</h2>
+
+        <p style="text-align:center; opacity:0.9; margin-bottom:2rem;">
+            Zavolejte nám nebo napište. Jsme tu pro vás.
+        </p>
+
+        <div class="contact-grid">
+
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>Technická podpora</h3>
+                    <p>Nefunguje vám aplikace nebo přístup?<br> Pište na <a
+                            href="mailto:podpora@iting.cz">podpora@iting.cz</a>. </p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Obchodní podpora</h3>
+                    <p>Chcete vědět více?<br> Napište na <a href="mailto:obchod@iting.cz">obchod@iting.cz</a><br> nebo
+                        volejte <a href="tel:+420724166988">+420 724 166 988</a>. </p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Administrativa</h3>
+                    <p>Potřebujete poradit s fakturací?<br> Pište na <a
+                            href="mailto:uctarna@iting.cz">uctarna@iting.cz</a><br> nebo volejte <a
+                            href="tel:+420723999152">+420 723 999 152</a>. </p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form>
+                    <label for="name">Jméno</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Zpráva</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                    <button type="submit">Odeslat zprávu</button>
+
+                    <p class="note">
+                        Vaše údaje použijeme pouze pro odpověď na zprávu.<br>
+                        Viz <a href="./legal/legal/ochrana-osobnich-udaju.html" target="_blank">
+                            Zásady zpracování osobních údajů
+                        </a>.
+                    </p>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div
+            class="footer-content max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left">
+
+            <div class="footer-logo">
+                <h3 class="text-2xl font-bold text-white mb-2">🌌 Chytré já</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Tvoje digitální vědomí pro řízení firmy i života.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#kontakt">Kontakt</a>
+                <a href="./legal/obchodni-podminky.html">Obchodní podmínky</a>
+                <a href="./legal/ochrana-osobnich-udaju.html">GDPR</a>
+                <a href="./legal/cookies.html">Cookies</a>
+            </div>
+
+            <div class="footer-copy">
+                © 2025 Chytré já. Všechna práva vyhrazena.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== HAMBURGER SCRIPT ===== -->
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("open");
+            hamburger.classList.toggle("active");
+        });
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- COOKIES -->
+    <div id="cookie-banner" class="cookie-banner hidden">
+        <div class="cookie-box">
+            <h3>🍪 Cookies</h3>
+            <p>
+                Aby web <strong>Chytré já</strong> fungoval správně a byl pro vás co nejlepší,
+                používáme nezbytné cookies a volitelné cookies pro statistiky a marketing.
+                Můžete si vybrat, co povolit.
+            </p>
+
+            <div class="cookie-options">
+                <label><input type="checkbox" id="c-stat"> Statistické</label>
+                <label><input type="checkbox" id="c-marketing"> Marketingové</label>
+            </div>
+
+            <div class="cookie-actions">
+                <button id="cookie-accept-all">Povolit vše</button>
+                <button id="cookie-accept-essential">Pouze nezbytné</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script src="/public/assets/js/cookies.js"></script> -->
+
+    <!-- ===== CHYTRÉ JÁ CHAT WIDGET ===== -->
+    <div id="cj-widget-btn">
+        <div class="cj-icon">
+            <i class="fa-solid fa-brain"></i>
+        </div>
+    </div>
+
+    <div id="cj-widget-panel">
+        <div class="cj-header">
+            <span>
+                <i class="fa-solid fa-brain"></i> Chytré já
+            </span>
+            <button id="cj-close">✖</button>
+        </div>
+
+        <div id="cj-messages" class="cj-messages"></div>
+
+        <div class="cj-input-row">
+            <input id="cj-input" type="text" placeholder="Napiš dotaz…" />
+            <button id="cj-send">➤</button>
+        </div>
+    </div>
+
+    <script type="module" src="/assets/js/cj-widget.js"></script>
+</body>
+
+</html>

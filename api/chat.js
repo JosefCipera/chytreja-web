@@ -12,16 +12,22 @@ Pokud odpověď neznáš, řekni to otevřeně a nabídni kontakt.
 `;
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
-  const { question } = req.body || {};
-  if (!question) {
-    return res.status(400).json({ error: "Missing question" });
-  }
-
   try {
+    if (req.method !== "POST") {
+      return res.status(405).json({ error: "Method not allowed" });
+    }
+
+    if (!process.env.OPENAI_API_KEY) {
+      return res.status(500).json({ error: "OPENAI_API_KEY missing" });
+    }
+
+    const body = req.body || {};
+    const question = body.question;
+
+    if (!question) {
+      return res.status(400).json({ error: "Missing question" });
+    }
+
     const response = await client.responses.create({
       model: "gpt-4.1-mini",
       input: [
@@ -32,12 +38,16 @@ export default async function handler(req, res) {
     });
 
     const answer =
-      response.output?.[0]?.content?.[0]?.text ||
+      response?.output?.[0]?.content?.[0]?.text ??
       "Zatím na to neumím odpovědět.";
 
-    res.status(200).json({ answer });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ error: "AI error" });
+    return res.status(200).json({ answer });
+
+  } catch (err) {
+    console.error("API CHAT ERROR:", err);
+    return res.status(500).json({
+      error: "AI server error",
+      details: err?.message || String(err)
+    });
   }
 }

@@ -367,3 +367,393 @@ header a.btn-primary {
 .nav-links.open a {
   color: #e2e8f0 !important;
 }
+
+body {
+  background-color: #0f172a;
+  /* Velmi tmavě modrá pro vesmírný efekt */
+  color: #f8fafc;
+  font-family: sans-serif;
+}
+
+.auth-card {
+  background: #1e293b;
+  /* Barva pro karty z tvého modelu */
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  margin: 100px auto;
+}
+
+h2 {
+  color: #2563eb;
+  text-align: center;
+}
+
+/* Modrá barva root uzlu */
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  color: white;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  /* Velmi jemné tmavé pozadí */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Tenký rámeček */
+  border-radius: 8px;
+  /* Zaoblení rohů */
+  color: #60a5fa;
+  /* Ta tvoje světle modrá */
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Zvýraznění při najetí */
+}
+
+/* Tlačítko přes celou šířku */
+.btn-full-width {
+  display: block;
+  width: 100%;
+  background-color: #2563eb;
+  /* Sytě modrá */
+  color: #ffffff;
+  text-align: center;
+  padding: 18px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+  text-transform: none;
+}
+
+.btn-full-width:hover {
+  background-color: #3b82f6;
+  box-shadow: 0 0 35px rgba(96, 165, 250, 0.6);
+}
+
+/* Odsazení pro Zakladatele */
+.hero-secondary-action {
+  margin-top: 25px;
+  /* Jasné vizuální oddělení */
+}
+
+.link-founders {
+  color: #8fb0ff;
+  /* Jemnější modrá pro sekundární akci */
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.link-founders:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.btn-full-width {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 80px;
+  /* Širší pás pro lepší pocit */
+  background: #2563eb;
+  /* Ta vaše modrá */
+  color: #0b1220;
+  /* Tmavé písmo pro maximální čitelnost na modré */
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.3);
+}
+
+.btn-full-width:hover {
+  background: #3b82f6;
+  /* Při najetí se pás ještě víc rozzáří */
+  color: #ffffff;
+  /* Písmo zbělá až při interakci */
+  letter-spacing: 4px;
+  /* Efekt roztažení při najetí */
+}
+
+.hero-secondary-action {
+  margin-top: 35px;
+  /* Větší mezera od modrého pásu */
+  text-align: center;
+}
+
+.link-founders {
+  color: #a8c7ff;
+  /* Jasnější ledová modrá pro lepší kontrast */
+  text-decoration: none;
+  font-size: 1.1rem;
+  /* Zvětšení na čitelnou velikost */
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.link-founders:hover {
+  opacity: 1;
+  color: #ffffff;
+  transform: translateY(-2px);
+  /* Jemný pohyb nahoru při najetí */
+  text-shadow: 0 0 10px rgba(147, 197, 253, 0.6);
+  /* Záře jako u vesmíru */
+}
+
+.games-section {
+  padding: 100px 20px;
+  /* Velké odsazení od vesmíru */
+  background: #0a1020;
+}
+
+.section-headline {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 60px;
+  text-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* Tři sloupce */
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.game-card {
+  background: rgba(15, 23, 42, 0.5);
+  padding: 30px;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-10px);
+  background: rgba(30, 41, 59, 0.8);
+}
+
+.game-tag {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #60a5fa;
+  margin-bottom: 10px;
+}
+
+.games-preview {
+  padding-top: 120px;
+  /* Pořádný odstup od vesmíru */
+  padding-bottom: 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-headline {
+  text-align: center;
+  color: #ffffff;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  font-weight: 800;
+}
+
+.games-grid {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
+
+.game-card {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.indicator-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+  /* Záře puntíku jako u planet */
+}
+
+.game-card h3 {
+  color: #60a5fa;
+  /* Ledová modrá z dashboardu */
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.game-card p {
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Zjemnění hlavního nadpisu */
+.section-headline {
+  text-align: center;
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 300;
+  /* Změna z 800 na 300 pro eleganci */
+  letter-spacing: 1px;
+  margin-bottom: 60px;
+  padding-top: 100px;
+  /* Odsazení od vesmíru */
+}
+
+/* Styl pro legendu pod textem */
+.game-legend {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.section-headline {
+  text-align: center;
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 500;
+  /* Zlatá střední cesta – ani tenký, ani tlustý */
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+  padding-top: 60px;
+  /* Přitáhnuto blíž k vesmíru pro lepší vazbu */
+  text-shadow: 0 0 15px rgba(96, 165, 250, 0.3);
+  /* Jemná záře pro čitelnost */
+}
+
+.game-card {
+  background: rgba(15, 23, 42, 0.6);
+  /* Mírně ztmavíme pro lepší kontrast legendy */
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  padding: 25px;
+  border-radius: 12px;
+  height: 100%;
+  /* Aby byly karty stejně vysoké */
+}
+
+/* Vynucení pozice a vzhledu nadpisu */
+h2.section-headline {
+  padding-top: 40px !important;
+  /* Ještě agresivnější přitažení k vesmíru */
+  margin-top: 0 !important;
+  font-weight: 600 !important;
+  /* Výraznější tučnost pro čitelnost */
+  font-size: 2.4rem !important;
+  text-align: center !important;
+  color: #ffffff !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Úprava kontejneru karet, aby nebyly rozlítané */
+.games-grid {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  /* Drží tři sloupce vedle sebe */
+  gap: 20px !important;
+  max-width: 1200px !important;
+  margin: 40px auto 0 !important;
+  /* Mezera mezi nadpisem a kartami */
+  padding: 0 20px !important;
+}
+
+.game-card {
+  flex: 1 !important;
+  /* Každá karta zabere stejné místo */
+  min-width: 0 !important;
+  /* Zabrání přetečení v flexboxu */
+}
+
+h2.section-headline {
+  padding-top: 40px !important;
+  margin-top: 0 !important;
+  font-weight: 500 !important;
+  /* Mírně ubereme na tloušťce, aby to "nesvítilo" tolik */
+  font-size: 2.2rem !important;
+  text-align: center !important;
+
+  /* Návrat k modravému odstínu */
+  color: #e2e8f0 !important;
+
+  /* Jemná aura místo ostrého světla */
+  text-shadow: 0 0 20px rgba(147, 197, 253, 0.3) !important;
+  letter-spacing: 1.5px !important;
+}
+
+/* To samé aplikujeme na nadpisy v kartách, aby to ladilo */
+.game-card h3 {
+  color: #93c5fd !important;
+  /* Světlejší modrá pro nadpisy her */
+  font-weight: 600 !important;
+  margin-bottom: 15px !important;
+}

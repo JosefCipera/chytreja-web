@@ -291,3 +291,464 @@ header .btn-primary {
         inset 0 0 160px rgba(120, 160, 255, 0.18),
         inset 0 0 240px rgba(120, 160, 255, 0.10);
 }
+
+/* ================================
+   MEDIOTÉKA – PREVIEW NA LANDING
+   ================================ */
+
+#medioteka-preview {
+    text-align: center;
+}
+
+#medioteka-preview .medioteka-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+#medioteka-preview .medioteka-intro {
+    max-width: 700px;
+    margin: 1.5rem auto 2.5rem;
+    opacity: 0.9;
+}
+
+#medioteka-preview .medioteka-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem auto;
+}
+
+#medioteka-preview .medioteka-preview-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+#medioteka-preview .medioteka-value,
+#medioteka-preview .medioteka-cta {
+    margin-top: 1.5rem;
+}
+
+.wave {
+    width: 4px;
+    height: 20px;
+    background: #60a5fa;
+    border-radius: 10px;
+    animation: wave-pulse 1.5s ease-in-out infinite;
+}
+
+.wave:nth-child(1) {
+    animation-delay: 0.0s;
+    height: 30px;
+}
+
+.wave:nth-child(2) {
+    animation-delay: 0.2s;
+    height: 50px;
+}
+
+.wave:nth-child(3) {
+    animation-delay: 0.4s;
+    height: 80px;
+    background: #2563eb;
+}
+
+.wave:nth-child(4) {
+    animation-delay: 0.2s;
+    height: 50px;
+}
+
+.wave:nth-child(5) {
+    animation-delay: 0.0s;
+    height: 30px;
+}
+
+@keyframes wave-pulse {
+
+    0%,
+    100% {
+        transform: scaleY(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scaleY(1.5);
+        opacity: 1;
+        filter: blur(1px);
+    }
+}
+
+.wave {
+    width: 4px;
+    height: 30px;
+    background: #60a5fa;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Klidový stav - jemné pohupování */
+.sokrates-waves.idle .wave {
+    animation: wave-idle 2s ease-in-out infinite;
+}
+
+/* Stav přemýšlení - agresivnější vlny */
+.sokrates-waves.thinking .wave {
+    animation: wave-thinking 0.5s ease-in-out infinite;
+    background: #2563eb;
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+}
+
+@keyframes wave-idle {
+
+    0%,
+    100% {
+        height: 20px;
+        opacity: 0.3;
+    }
+
+    50% {
+        height: 40px;
+        opacity: 0.6;
+    }
+}
+
+@keyframes wave-thinking {
+
+    0%,
+    100% {
+        height: 30px;
+        transform: scaleY(1);
+    }
+
+    50% {
+        height: 80px;
+        transform: scaleY(1.2);
+    }
+}
+
+/* Každá vlna má trochu jiný start, aby to nebylo tupě stejné */
+.wave:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.wave:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.wave:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.wave:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+.wave {
+    width: 6px;
+    background: #60a5fa;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+}
+
+/* Různé základní výšky pro organický vzhled */
+.wave:nth-child(1) {
+    height: 25px;
+    animation: wave-live 1.8s infinite;
+}
+
+.wave:nth-child(2) {
+    height: 45px;
+    animation: wave-live 2.2s infinite;
+}
+
+.wave:nth-child(3) {
+    height: 75px;
+    animation: wave-live 1.5s infinite;
+    background: #2563eb;
+}
+
+.wave:nth-child(4) {
+    height: 40px;
+    animation: wave-live 2.0s infinite;
+}
+
+.wave:nth-child(5) {
+    height: 20px;
+    animation: wave-live 1.7s infinite;
+}
+
+@keyframes wave-live {
+
+    0%,
+    100% {
+        transform: scaleY(1);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scaleY(1.3);
+        opacity: 0.8;
+    }
+}
+
+/* Když Sokrates "přemýšlí" */
+.sokrates-waves.thinking .wave {
+    animation: wave-think 0.4s infinite alternate !important;
+}
+
+@keyframes wave-think {
+    from {
+        transform: scaleY(1);
+        filter: brightness(1);
+    }
+
+    to {
+        transform: scaleY(1.8);
+        filter: brightness(1.5);
+    }
+}
+
+/* Vstupní pole a texty - odbělení */
+#sokrates-input {
+    color: #cbd5e1 !important;
+    /* Ledová šedá místo bílé */
+    border: 1px solid rgba(147, 197, 253, 0.1) !important;
+}
+
+#sokrates-input::placeholder {
+    color: #64748b;
+}
+
+#ai-response-text {
+    color: #cbd5e1;
+    transition: all 0.5s ease;
+}
+
+/* Vlnky s různou výškou */
+.wave {
+    width: 6px;
+    background: #60a5fa;
+    border-radius: 10px;
+    opacity: 0.6;
+}
+
+/* Definujeme fixní různé výšky pro IDLE stav */
+.wave:nth-child(1) {
+    height: 30px;
+    animation-duration: 2.1s;
+}
+
+.wave:nth-child(2) {
+    height: 60px;
+    animation-duration: 1.7s;
+}
+
+.wave:nth-child(3) {
+    height: 90px;
+    animation-duration: 1.2s;
+    background: #2563eb;
+}
+
+/* Dominantní střed */
+.wave:nth-child(4) {
+    height: 50px;
+    animation-duration: 1.9s;
+}
+
+.wave:nth-child(5) {
+    height: 25px;
+    animation-duration: 2.3s;
+}
+
+.sokrates-waves.idle .wave {
+    animation: wave-live ease-in-out infinite;
+}
+
+@keyframes wave-live {
+
+    0%,
+    100% {
+        transform: scaleY(1);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scaleY(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Thinking stav už nebude tak "splašený", spíš pulzující */
+.sokrates-waves.thinking .wave {
+    animation: wave-think 0.6s ease-in-out infinite alternate !important;
+    background: #93c5fd;
+}
+
+@keyframes wave-think {
+    from {
+        transform: scaleY(0.8);
+        filter: brightness(1);
+    }
+
+    to {
+        transform: scaleY(1.4);
+        filter: brightness(1.2);
+    }
+}
+
+/* Kontejner pro vlnky - strohý a centrovaný */
+#wave-visualizer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    /* Větší mezery pro vzdušnost */
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+.wave {
+    width: 4px;
+    /* Tenčí, techničtější vzhled */
+    background: #60a5fa;
+    border-radius: 20px;
+    opacity: 0.3;
+    /* V klidu velmi jemné */
+    transition: all 0.5s ease;
+}
+
+/* Různé výšky vln pro organický pocit (strohá varianta) */
+.wave:nth-child(1) {
+    height: 15px;
+}
+
+.wave:nth-child(2) {
+    height: 35px;
+}
+
+.wave:nth-child(3) {
+    height: 55px;
+    background: #2563eb;
+    opacity: 0.5;
+}
+
+/* Dominantní střed */
+.wave:nth-child(4) {
+    height: 30px;
+}
+
+.wave:nth-child(5) {
+    height: 10px;
+}
+
+/* Klidové dýchání (IDLE) */
+.sokrates-waves.idle .wave {
+    animation: wave-breathe 3s ease-in-out infinite;
+}
+
+@keyframes wave-breathe {
+
+    0%,
+    100% {
+        transform: scaleY(1);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: scaleY(1.1);
+        opacity: 0.4;
+    }
+}
+
+/* Přemýšlení (THINKING) - když čekáme na API */
+.sokrates-waves.thinking .wave {
+    animation: wave-active 0.6s ease-in-out infinite alternate !important;
+    opacity: 0.8;
+    background: #93c5fd;
+    box-shadow: 0 0 15px rgba(147, 197, 253, 0.3);
+}
+
+@keyframes wave-active {
+    from {
+        transform: scaleY(0.7);
+    }
+
+    to {
+        transform: scaleY(1.5);
+    }
+}
+
+/* Barva textu, který píše uživatel do řádku */
+#sokrates-input {
+    color: #cbd5e1 !important;
+    /* Ledová šedá */
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid rgba(147, 197, 253, 0.1) !important;
+}
+
+/* Barva placeholderu (toho textu "Zeptejte se na cokoli...") */
+#sokrates-input::placeholder {
+    color: #64748b !important;
+    /* Tlumená břidlicová, aby to nesvítilo */
+    opacity: 1;
+}
+
+/* Barva odpovědi, kterou vypíše Sokrates */
+#ai-response-text {
+    color: #94a3b8 !important;
+    /* Strohá šedá */
+    font-weight: 400;
+}
+
+/* Oprava nápovědy (placeholderu) */
+#sokrates-input::placeholder {
+    color: #64748b !important;
+}
+
+/* Zákaz bílého pozadí při automatickém doplňování (Chrome, Safari, Edge) */
+#sokrates-input:-webkit-autofill,
+#sokrates-input:-webkit-autofill:hover,
+#sokrates-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #cbd5e1 !important;
+    /* Barva písma */
+    -webkit-box-shadow: 0 0 0px 1000px #0f172a inset !important;
+    /* Barva pozadí (tmavě modrá) */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Tlačítko se šipkou v kolečku */
+.sokrates-circle-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2563eb;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.sokrates-circle-btn:hover {
+    background: #3b82f6;
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.5);
+}
+
+.sokrates-circle-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Ikona šipky - mírné posunutí pro optický střed */
+.sokrates-circle-btn span {
+    transform: translateX(1px);
+    font-size: 1.1rem;
+}

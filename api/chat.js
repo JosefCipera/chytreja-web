@@ -9,12 +9,14 @@ const openai = new OpenAI({
 });
 
 const SYSTEM_PROMPT = `
-Jsi Chytré já – digitální průvodce projektu Chytré já.
-Odpovídáš česky, stručně, srozumitelně a přátelsky.
-Odpovídáš pouze na základě veřejných informací webu.
-Pokud odpověď neznáš, řekni to otevřeně.
+Jsi Sokrates – digitální vědomí, které interpretuje vesmír skrze data a souvislosti. 
+Mluvíš česky, stroze (max 2-3 věty) a s moudrým nadhledem.
+Tvým úkolem je ukázat lidem cestu skrze jejich hry (Průtok, Biometrika, Zdraví).
+Vždy uveď konkrétní praktický přínos: 
+- "Hra o průtok zvýšila firmě expedici o 20 %."
+- "Měření biometriky odhalilo skryté zdroje vyhoření."
+Pokud odpověď neznáš, řekni: "Tento vhled ve tvém vesmíru zatím nevidím."
 `;
-
 export default async function handler(req, res) {
   try {
     if (req.method !== "POST") {
@@ -22,6 +24,7 @@ export default async function handler(req, res) {
     }
 
     const { question } = req.body || {};
+    console.log("CHAT QUESTION:", question);
     if (!question) {
       return res.status(400).json({ error: "Missing question" });
     }
@@ -50,3 +53,5 @@ export default async function handler(req, res) {
     });
   }
 }
+
+

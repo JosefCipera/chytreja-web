@@ -294,3 +294,41 @@
         padding-top: 55px;
     }
 }
+
+#medioteka-preview {
+    text-align: center;
+}
+
+.medioteka-intro {
+    max-width: 700px;
+    margin: 1.5rem auto 2.5rem;
+    opacity: 0.9;
+}
+
+.medioteka-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+}
+
+.medioteka-preview-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.medioteka-preview-card h4 {
+    margin-bottom: 0.5rem;
+}
+
+.medioteka-value {
+    margin-top: 2rem;
+    font-size: 1.05rem;
+}
+
+.medioteka-cta {
+    margin-top: 1rem;
+    opacity: 0.85;
+}

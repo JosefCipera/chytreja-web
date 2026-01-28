@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chytré já – Tvůj digitální vesmír</title>
+    <title>Chytré já – Váš digitální druhý mozek</title>
 
     <!-- Font Awesome 6 Free -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -20,12 +20,11 @@
     <link rel="stylesheet" href="./assets/css/cookies.css">
     <link rel="stylesheet" href="./assets/css/cj-widget.css">
     <link rel="stylesheet" href="./assets/css/landing.css">
+    <link rel="stylesheet" href="./assets/css/pricing.css">
     <!-- Knihovny -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
 
-    <!-- ENV 
-    <script type="module" src="../core/js/env.js"></script> -->
 </head>
 
 <body>
@@ -33,13 +32,22 @@
     <!-- ===== MENU ===== -->
     <nav class="main-nav">
         <div class="nav-container">
-            <div class="nav-logo">🌌 Chytré já</div>
+            <h1 id="appTitle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 48" width="140" height="48"
+                    style="vertical-align: middle;">
+                    <circle cx="24" cy="24" r="18" fill="none" stroke="#2563eb" stroke-width="4.5"
+                        stroke-dasharray="105 13" stroke-dashoffset="6.5" transform="rotate(-90 24 24)" />
+                    <text x="52" y="30" font-family="Inter" font-size="18" font-weight="600" fill="#93c5fd">
+                        Chytré já
+                    </text>
+                </svg>
+            </h1>
+            <!--<div class="nav-logo">Sokrates</div> -->
             <ul class="nav-links" id="navLinks">
                 <li><a href="medioteka.html">Mediotéka</a></li>
                 <li><a href="/founders/founders.html">Zakladatelé</a></li>
-                <li><a href="#faq-chat">Zeptejte se</a></li>
+                <li><a href="#dialog">Dialog</a></li>
                 <li><a href="#cenik">Ceník</a></li>
-                <li><a href="#onas">O nás</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
 
@@ -56,17 +64,22 @@
     <!-- ===== HLAVIČKA ===== -->
     <header class="hero-section">
         <div class="container hero-center">
-            <h1>🌌 Chytré já</h1>
-
+            <h1 class="glitch-text">Chytré já</h1>
             <p class="section-subtitle">
-                Tvé druhé, digitální já. Pomáhá ti správně se rozhodovat, řešit úkoly
-                a fungovat chytřeji doma i v práci.
+                Vaše předpověď. Vaše rozhodnutí. Vaše hra. <br>
             </p>
 
-            <!-- Opravený odkaz do Universe 
-            <a href="../public/universe/universe.html" class="btn-primary hero-btn">
-                Vstoupit do vesmíru
-            </a> -->
+            <div class="hero-actions-container" style="max-width: 600px; margin: 40px auto 0;">
+                <a href="app.html?user=demo" class="btn-full-width">
+                    Nahlédněte do vesmíru
+                </a>
+
+                <div style="margin-top: 24px; text-align: center;">
+                    <a href="#founders" class="link-founders">
+                        ...nebo se rovnou staňte zakladatelem
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -74,49 +87,109 @@
         <object data="assets/svg/universe.svg" type="image/svg+xml"></object>
     </section>
 
-    <!-- ===== PROČ VZNIKLO CHYTRÉ JÁ ===== -->
-    <section id="proc-chytre-ja" class="about-section alt-bg">
-        <h2>🚀 Budoucnost patří inteligentním průvodcům</h2>
+    <section class="games-preview">
+        <h2
+            style="color: #93c5fd !important; font-weight: 600 !important; font-size: 2.5rem !important; text-align: center !important; margin-bottom: 50px !important; padding-top: 50px !important;">
+            Ovládněte vaše hry
+        </h2>
+        <div class="games-grid">
+            <div class="game-card">
+                <h3>Hra života</h3>
+                <p><b>Tato hra vám pomůže žít v pohodě dnes i v pozdním věku.</b><br></br>
+                    V každém okamžiku uvidíte, jak jste na tom s energií, odolností a schopností zvládat zátěž.
+                    Cílem není výkon, ale dlouhodobě nabitá baterie vašeho života.</p>
 
-        <p class="proc-intro">
-            Chytré já jsme vytvořili jako inteligentní ekosystém — propojuje zdraví, energii, výkon i práci
-            a vede vás každý den správným směrem.
-        </p>
-
-        <div class="proc-grid">
-            <div class="proc-card">
-                <i class="fa-solid fa-brain"></i>
-                <h3>AI jako superinteligence</h3>
-                <p>AI už není jen nástroj. Je to průvodce, který pomáhá chápat priority a dělat lepší rozhodnutí.</p>
+                <div class="game-legend">
+                    <div class="legend-item"><span class="dot"
+                            style="background: #22c55e; box-shadow: 0 0 5px #22c55e;"></span> Zdraví</div>
+                    <div class="legend-item"><span class="dot"
+                            style="background: #f59e0b; box-shadow: 0 0 5px #f59e0b;"></span> Tělo</div>
+                    <div class="legend-item"><span class="dot"
+                            style="background: #a855f7; box-shadow: 0 0 5px #a855f7;"></span> Mysl</div>
+                    <div class="legend-item"><span class="dot"
+                            style="background: #ef4444; box-shadow: 0 0 5px #ef4444;"></span> Výživa</div>
+                </div>
             </div>
 
-            <div class="proc-card">
-                <i class="fa-solid fa-heart-pulse"></i>
-                <h3>Medicína ukazuje cestu</h3>
-                <p>Nejde o množství dat, ale o jejich výklad. Chytré já dává jasné kroky, co zlepšit právě teď.</p>
+            <div class="game-card">
+                <h3>TOC</h3>
+                <p>Změní vaše současné řízení tak, abyste vydělávali víc než doposud.</p>
+
+                <div class="game-legend">
+                    <div class="legend-item"><span class="dot"
+                            style="background: #34d399; box-shadow: 0 0 5px #34d399;"></span> Výroba</div>
+                    <div class="legend-item"><span class="dot"
+                            style="background: #fbbf24; box-shadow: 0 0 5px #fbbf24;"></span> Projekty</div>
+                    <div class="legend-item"><span class="dot"
+                            style="background: #f87171; box-shadow: 0 0 5px #f87171;"></span> Marketing</div>
+                    <div class="legend-item"><span class="dot"
+                            style="background: #fb7185; box-shadow: 0 0 5px #fb7185;"></span> Průtokové účetnictví</div>
+                </div>
             </div>
 
-            <div class="proc-card">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <h3>Adaptivní učení i práce</h3>
-                <p>Budoucnost patří systémům, které se přizpůsobují člověku. Chytré já funguje doma i ve firmě.</p>
-            </div>
+            <div class="game-card">
+                <h3>Stratég</h3>
+                <p>Bez kvalitní strategie, nebo aspoň byznys modelu, budete jen obtížně vyhrávat.</p>
 
-            <div class="proc-card">
-                <i class="fa-solid fa-shield-halved"></i>
-                <h3>Důvěra jako hodnota</h3>
-                <p>Důvěra vzniká tam, kde je směr jasný. Chytré já nepřekáží — jen pomáhá vidět priority.</p>
+                <div class="game-legend">
+                    <div class="legend-item"><span class="dot"
+                            style="background: #38bdf8; box-shadow: 0 0 5px #38bdf8;"></span> Byznys model</div>
+                    <div class="legend-item"><span class="dot"
+                            style="background: #60a5fa; box-shadow: 0 0 5px #60a5fa;"></span> Modrý oceán</div>
+                    <div class="legend-item"><span class="dot"
+                            style="background: #818cf8; box-shadow: 0 0 5px #818cf8;"></span> Byznys plán</div>
+                </div>
             </div>
         </div>
-
-        <p class="proc-footer" style="color:#60a5fa;">
-            Chytré já je jako vesmír, který spojuje váš život i vaši práci — a každý den vám ukazuje další správný krok.
-        </p>
     </section>
 
-    <!-- ===== CENÍK ===== -->
+    <!-- Komunilace se Sokratem -->
+    <section id="dialog"
+        style="padding: 100px 0; background: radial-gradient(circle at center, rgba(37, 99, 235, 0.05) 0%, transparent 70%);">
+        <h2
+            style="color: #93c5fd !important; font-weight: 600 !important; font-size: 2.5rem !important; text-align: center !important; margin-bottom: 20px !important;">
+            Zeptejte se
+        </h2>
+        <p style="text-align: center; color: #94a3b8; margin-bottom: 60px;">Chytré já nehledá v dokumentech, ale
+            interpretuje váš vesmír.</p>
+
+        <div class="ai-wave-container" style="max-width: 900px; margin: 0 auto; text-align: center;">
+
+            <div id="wave-visualizer" class="sokrates-waves idle"
+                style="height: 120px; display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 40px;">
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+            </div>
+
+            <div id="ai-response-text"
+                style="color: #64748b; font-size: 1.1rem; font-style: italic; min-height: 60px; margin-bottom: 30px;">
+                Zeptejte se na cokoli, co se týká vašich her...
+            </div>
+
+            <div style="position: relative; max-width: 800px; margin: 0 auto;">
+                <span
+                    style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #2563eb; font-size: 1.4rem; font-weight: bold; pointer-events: none; z-index: 10;">Σ</span>
+
+                <input type="text" id="sokrates-input" autocomplete="off" placeholder="Zeptejte se na svůj vesmír..."
+                    style="width: 100%; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(147, 197, 253, 0.1); padding: 18px 65px 18px 50px; border-radius: 50px; color: #cbd5e1; font-size: 1.2rem; outline: none; box-shadow: 0 0 20px rgba(0,0,0,0.2);">
+
+                <button id="sokrates-send"
+                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #2563eb; border: none; width: 42px; height: 42px; border-radius: 50%; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">
+                    ➤
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CENÍK ===== 
     <section id="cenik" class="alt-bg">
-        <h2>💎 Plány a ceny</h2>
+        <h2
+            style="color: #93c5fd !important; font-weight: 600 !important; font-size: 2.5rem !important; text-align: center !important; margin-bottom: 25px !important; padding-top: 50px !important;">
+            Plány a ceny
+        </h2>
 
         <p class="proc-intro">
             Každý tarif otevírá jinou část vašeho digitálního vesmíru.
@@ -157,8 +230,1090 @@
                 <button class="btn">Kontaktovat</button>
             </div>
         </div>
+    </section> -->
+
+    <!-- ===== CENÍK ===== -->
+    <section id="cenik" class="alt-bg">
+        <h2
+            style="color: #93c5fd !important; font-weight: 600 !important; font-size: 2.5rem !important; text-align: center !important; margin-bottom: 15px !important; padding-top: 50px !important;">
+            Plány a ceny
+        </h2>
+
+        <p class="proc-intro">
+            Vyberte si cestu, která odpovídá vašim potřebám.
+        </p>
+
+        <!-- TOGGLE PŘEPÍNAČ -->
+        <div class="pricing-toggle">
+            <button class="toggle-btn active" data-target="individual">
+                <i class="fas fa-user"></i> Jednotlivci
+            </button>
+            <button class="toggle-btn" data-target="business">
+                <i class="fas fa-building"></i> Firmy
+            </button>
+        </div>
+
+        <!-- JEDNOTLIVCI -->
+        <div class="pricing-content active" id="pricing-individual">
+            <div class="pricing-grid">
+
+                <div class="pricing-card">
+                    <div class="badge-top trial">7 DNÍ ZDARMA</div>
+                    <h3>🧪 Trial</h3>
+                    <div class="price">0 Kč</div>
+                    <p class="plan-desc">Vyzkoušejte Hru života na 7 dní zcela zdarma.</p>
+                    <ul class="features-list">
+                        <li><span class="ok">✔</span> Plná Hra života</li>
+                        <li><span class="ok">✔</span> AI asistent Chytré já</li>
+                        <li><span class="ok">✔</span> Všechny metriky</li>
+                        <li><span class="ok">✔</span> Integrace biometrie</li>
+                        <li><span class="info">ℹ</span> 7 dní bez omezení</li>
+                    </ul>
+                    <button class="btn trial-btn">Začít trial</button>
+                </div>
+
+                <div class="pricing-card pro-card">
+                    <div class="badge-top">NEJOBLÍBENĚJŠÍ</div>
+                    <h3>✨ Pro</h3>
+                    <div class="price">490 Kč <span class="period">/ měsíc</span></div>
+                    <div class="annual-price">nebo 4 900 Kč/rok <span class="save-badge">🎁 2 měsíce zdarma</span></div>
+                    <p class="plan-desc">Neomezený přístup k Hře života a všem funkcím.</p>
+                    <ul class="features-list">
+                        <li><span class="ok">✔</span> Vše z Trialu</li>
+                        <li><span class="ok">✔</span> Neomezené použití</li>
+                        <li><span class="ok">✔</span> Priority podpora</li>
+                        <li><span class="ok">✔</span> Nové funkce první</li>
+                        <li><span class="ok">✔</span> Export dat</li>
+                    </ul>
+                    <button class="btn primary">Aktivovat Pro</button>
+                </div>
+
+                <div class="pricing-card founders-card">
+                    <div class="badge-top founders">🌟 LIMITOVÁNO</div>
+                    <h3>🏛️ Founders</h3>
+                    <div class="price">15 000 Kč <span class="period">jednorázově</span></div>
+                    <p class="plan-desc">Doživotní přístup ke všemu. Pouze <strong>50 míst</strong>.</p>
+                    <ul class="features-list">
+                        <li><span class="ok">✔</span> Vše z Pro doživotně</li>
+                        <li><span class="ok">✔</span> Všechny budoucí hry</li>
+                        <li><span class="ok">✔</span> Beta přístup</li>
+                        <li><span class="ok">✔</span> VIP podpora</li>
+                        <li><span class="ok">✔</span> Zakladatelský badge</li>
+                    </ul>
+                    <button class="btn founders-btn">Stát se zakladatelem</button>
+
+                    <!-- ⭐ VYLEPŠENÉ VAROVÁNÍ -->
+                    <div class="scarcity-box">
+                        <div class="scarcity-number">⏰ ZBÝVÁ JEN <span class="big-number">37</span> MÍST</div>
+                        <div class="scarcity-warning">Poté se nabídka zavře navždy.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FIRMY -->
+        <div class="pricing-content" id="pricing-business">
+            <div class="pricing-grid">
+
+                <div class="pricing-card">
+                    <div class="badge-top trial">7 DNÍ ZDARMA</div>
+                    <h3>🧪 Trial</h3>
+                    <div class="price">0 Kč</div>
+                    <p class="plan-desc">Vyzkoušejte TOC a BMC na 7 dní zdarma.</p>
+                    <ul class="features-list">
+                        <li><span class="ok">✔</span> Hra o průtok (TOC)</li>
+                        <li><span class="ok">✔</span> Hra o strategii (BMC)</li>
+                        <li><span class="ok">✔</span> AI analýza</li>
+                        <li><span class="ok">✔</span> Až 3 uživatelé</li>
+                        <li><span class="info">ℹ</span> 7 dní bez omezení</li>
+                    </ul>
+                    <button class="btn trial-btn">Začít trial</button>
+                </div>
+
+                <div class="pricing-card pro-card">
+                    <div class="badge-top">NEJOBLÍBENĚJŠÍ</div>
+                    <h3>🏢 Business</h3>
+                    <div class="price">4 900 Kč <span class="period">/ měsíc</span></div>
+                    <div class="annual-price">nebo 49 000 Kč/rok <span class="save-badge">🎁 2 měsíce zdarma</span>
+                    </div>
+                    <p class="plan-desc">Kompletní nástroje pro řízení byznysu.</p>
+                    <ul class="features-list">
+                        <li><span class="ok">✔</span> Vše z Trialu</li>
+                        <li><span class="ok">✔</span> Až 10 uživatelů</li>
+                        <li><span class="ok">✔</span> Integrace (API)</li>
+                        <li><span class="ok">✔</span> Týmové dashboardy</li>
+                        <li><span class="ok">✔</span> Priority podpora</li>
+                        <li><span class="ok">✔</span> Školení týmu (2h)</li>
+                    </ul>
+                    <button class="btn primary">Aktivovat Business</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>🏛️ Enterprise</h3>
+                    <div class="price">Na dotaz</div>
+                    <p class="plan-desc">Řešení na míru pro velké organizace.</p>
+                    <ul class="features-list">
+                        <li><span class="ok">✔</span> Vše z Business</li>
+                        <li><span class="ok">✔</span> Neomezení uživatelé</li>
+                        <li><span class="ok">✔</span> Dedikovaný support</li>
+                        <li><span class="ok">✔</span> On-premise možnost</li>
+                        <li><span class="ok">✔</span> Custom integrace</li>
+                        <li><span class="ok">✔</span> SLA 99.9%</li>
+                    </ul>
+                    <button class="btn">Kontaktovat</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FOUNDERS CTA (pod oběma variantami) -->
+        <div class="founders-banner">
+            <div class="founders-banner-content">
+                <h3>🌟 Staňte se zakladatelem Sokratu</h3>
+                <p>
+                    Připojte se k <strong>50 zakladatelům</strong>, kteří získají doživotní přístup
+                    ke všem hrám a budoucím funkcím. Jednorázová investice <strong>15 000 Kč</strong>.
+                </p>
+                <a href="/founders/founders.html" class="founders-banner-btn">
+                    Zjistit více o Founders programu
+                </a>
+            </div>
+        </div>
+
     </section>
 
+    <style>
+        /* ===== PRICING TOGGLE ===== */
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 30px 0 50px;
+        }
+
+        .toggle-btn {
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px solid rgba(147, 197, 253, 0.2);
+            color: #94a3b8;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-btn:hover {
+            border-color: rgba(147, 197, 253, 0.4);
+            color: #cbd5e1;
+        }
+
+        .toggle-btn.active {
+            background: rgba(37, 99, 235, 0.2);
+            border-color: #3b82f6;
+            color: #93c5fd;
+        }
+
+        /* ===== PRICING CONTENT ===== */
+        .pricing-content {
+            display: none;
+        }
+
+        .pricing-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== PRICING CARDS ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .pricing-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(147, 197, 253, 0.1);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(147, 197, 253, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .pro-card {
+            border-color: #3b82f6;
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .founders-card {
+            border-color: #fbbf24;
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.15);
+        }
+
+        /* ===== BADGES ===== */
+        .badge-top {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3b82f6;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .badge-top.trial {
+            background: #10b981;
+        }
+
+        .badge-top.founders {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        }
+
+        /* ===== PRICE ===== */
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #93c5fd;
+            margin: 20px 0 8px;
+        }
+
+        .period {
+            font-size: 1rem;
+            color: #64748b;
+            font-weight: 400;
+        }
+
+        .annual-price {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .save-badge {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid #22c55e;
+            color: #22c55e;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .plan-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            min-height: 48px;
+            margin-bottom: 24px;
+        }
+
+        /* ===== FEATURES LIST ===== */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .features-list .ok {
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .features-list .info {
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        .features-list .star {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            width: 100%;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .scarcity-note {
+            text-align: center;
+            color: #fbbf24;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 12px;
+            padding: 8px;
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 6px;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .trial-btn {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid #10b981;
+            color: #10b981;
+        }
+
+        .trial-btn:hover {
+            background: rgba(16, 185, 129, 0.2);
+        }
+
+        .btn.primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn.primary:hover {
+            background: #2563eb;
+            transform: scale(1.02);
+        }
+
+        .founders-btn {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #0f172a;
+        }
+
+        .founders-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(251, 191, 36, 0.4);
+        }
+
+        /* ===== FOUNDERS BANNER ===== */
+        .founders-banner {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+            border: 2px solid rgba(251, 191, 36, 0.2);
+            border-radius: 16px;
+            padding: 48px 32px;
+            margin: 60px auto 0;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .founders-banner-content h3 {
+            color: #fbbf24;
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .founders-banner-content p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .founders-banner-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #0f172a;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .founders-banner-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(251, 191, 36, 0.4);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .toggle-btn {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+
+    <script>
+        // Toggle mezi Individual a Business
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active z ostatních
+                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.pricing-content').forEach(c => c.classList.remove('active'));
+
+                // Aktivuj vybraný
+                btn.classList.add('active');
+                const target = btn.dataset.target;
+                document.getElementById(`pricing-${target}`).classList.add('active');
+            });
+        });
+    </script>
+
+    <style>
+        /* ===== PRICING TOGGLE ===== */
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 30px 0 50px;
+        }
+
+        .toggle-btn {
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px solid rgba(147, 197, 253, 0.2);
+            color: #94a3b8;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-btn:hover {
+            border-color: rgba(147, 197, 253, 0.4);
+            color: #cbd5e1;
+        }
+
+        .toggle-btn.active {
+            background: rgba(37, 99, 235, 0.2);
+            border-color: #3b82f6;
+            color: #93c5fd;
+        }
+
+        /* ===== PRICING CONTENT ===== */
+        .pricing-content {
+            display: none;
+        }
+
+        .pricing-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== PRICING CARDS ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .pricing-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(147, 197, 253, 0.1);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(147, 197, 253, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .pro-card {
+            border-color: #3b82f6;
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .founders-card {
+            border-color: #fbbf24;
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.15);
+        }
+
+        /* ===== BADGES ===== */
+        .badge-top {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3b82f6;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .badge-top.trial {
+            background: #10b981;
+        }
+
+        .badge-top.founders {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        }
+
+        /* ===== PRICE ===== */
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #93c5fd;
+            margin: 20px 0 8px;
+        }
+
+        .period {
+            font-size: 1rem;
+            color: #64748b;
+            font-weight: 400;
+        }
+
+        .annual-price {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .save-badge {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid #22c55e;
+            color: #22c55e;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .plan-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            min-height: 48px;
+            margin-bottom: 24px;
+        }
+
+        /* ===== FEATURES LIST ===== */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .features-list .ok {
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .features-list .info {
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        .features-list .star {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            width: 100%;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .trial-btn {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid #10b981;
+            color: #10b981;
+        }
+
+        .trial-btn:hover {
+            background: rgba(16, 185, 129, 0.2);
+        }
+
+        .btn.primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn.primary:hover {
+            background: #2563eb;
+            transform: scale(1.02);
+        }
+
+        .founders-btn {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #0f172a;
+        }
+
+        .founders-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(251, 191, 36, 0.4);
+        }
+
+        /* ===== FOUNDERS BANNER ===== */
+        .founders-banner {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+            border: 2px solid rgba(251, 191, 36, 0.2);
+            border-radius: 16px;
+            padding: 48px 32px;
+            margin: 60px auto 0;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .founders-banner-content h3 {
+            color: #fbbf24;
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .founders-banner-content p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .founders-banner-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #0f172a;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .founders-banner-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(251, 191, 36, 0.4);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .toggle-btn {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+
+    <script>
+        // Toggle mezi Individual a Business
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active z ostatních
+                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.pricing-content').forEach(c => c.classList.remove('active'));
+
+                // Aktivuj vybraný
+                btn.classList.add('active');
+                const target = btn.dataset.target;
+                document.getElementById(`pricing-${target}`).classList.add('active');
+            });
+        });
+    </script>
+
+    <style>
+        /* ===== PRICING TOGGLE ===== */
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 30px 0 50px;
+        }
+
+        .toggle-btn {
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px solid rgba(147, 197, 253, 0.2);
+            color: #94a3b8;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-btn:hover {
+            border-color: rgba(147, 197, 253, 0.4);
+            color: #cbd5e1;
+        }
+
+        .toggle-btn.active {
+            background: rgba(37, 99, 235, 0.2);
+            border-color: #3b82f6;
+            color: #93c5fd;
+        }
+
+        /* ===== PRICING CONTENT ===== */
+        .pricing-content {
+            display: none;
+        }
+
+        .pricing-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== PRICING CARDS ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .pricing-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(147, 197, 253, 0.1);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(147, 197, 253, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .pro-card {
+            border-color: #3b82f6;
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .founders-card {
+            border-color: #fbbf24;
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.15);
+        }
+
+        /* ===== BADGES ===== */
+        .badge-top {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3b82f6;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .badge-top.trial {
+            background: #10b981;
+        }
+
+        .badge-top.founders {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        }
+
+        /* ===== PRICE ===== */
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #93c5fd;
+            margin: 20px 0;
+        }
+
+        .period {
+            font-size: 1rem;
+            color: #64748b;
+            font-weight: 400;
+        }
+
+        .plan-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            min-height: 48px;
+            margin-bottom: 24px;
+        }
+
+        /* ===== FEATURES LIST ===== */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .features-list .ok {
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .features-list .info {
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        .features-list .star {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            width: 100%;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .trial-btn {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid #10b981;
+            color: #10b981;
+        }
+
+        .trial-btn:hover {
+            background: rgba(16, 185, 129, 0.2);
+        }
+
+        .btn.primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn.primary:hover {
+            background: #2563eb;
+            transform: scale(1.02);
+        }
+
+        .founders-btn {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #0f172a;
+        }
+
+        .founders-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(251, 191, 36, 0.4);
+        }
+
+        /* ===== FOUNDERS BANNER ===== */
+        .founders-banner {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+            border: 2px solid rgba(251, 191, 36, 0.2);
+            border-radius: 16px;
+            padding: 48px 32px;
+            margin: 60px auto 0;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .founders-banner-content h3 {
+            color: #fbbf24;
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .founders-banner-content p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .founders-banner-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #000000 !important;
+            /* Černá */
+            font-weight: 700 !important;
+            /* Tučná */
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .founders-banner-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(251, 191, 36, 0.4);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .toggle-btn {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+
+    <script>
+        // Toggle mezi Individual a Business
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active z ostatních
+                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.pricing-content').forEach(c => c.classList.remove('active'));
+
+                // Aktivuj vybraný
+                btn.classList.add('active');
+                const target = btn.dataset.target;
+                document.getElementById(`pricing-${target}`).classList.add('active');
+            });
+        });
+    </script>
     <!-- ===== FOUNDERS CTA ===== 
     <section id="founders-cta" class="founders-cta-section">
         <div class="founders-cta-box">
@@ -172,49 +1327,13 @@
             </a>
         </div>
     </section> -->
-    <!-- ===== O NÁS ===== -->
-    <section id="onas" class="about-section onas-box">
-        <h2>🌠 O nás</h2>
-        <div class="onas-text">
-            <p> Začínali jsme v průmyslu s plánováním výroby tam, kde na to běžné systémy nestačily. </p>
-            <p> Dnes vytváříme Chytré já – prostor pro průtokové řízení (TOC) s využitím moderních technologií včetně
-                AI. Pomáháme tak lidem i firmám vidět celý svůj vesmír jasně, jednoduše a chytře. </p>
-        </div> <!-- ČASOVÁ OSA -->
-        <div class="history-timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h4>2018 — Začátky v průmyslu</h4>
-                    <p>První algoritmy pro plánování výroby tam, kde selhávaly běžné ERP systémy.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h4>2020 — Tvorba vlastních modelů</h4>
-                    <p>Vzniká modelování toků, úzkých míst a predikce výsledků pro reálné firmy.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h4>2023 — Zrození Chytrého Já</h4>
-                    <p>Začínáme spojovat umělou inteligenci s firemní logikou a procesy.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h4>2025 — Digitální vesmír</h4>
-                    <p>Chytré Já se mění ve vizuální ekosystém. Universe, AI, modely a moduly.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ===== KONTAKT ===== -->
     <section id="kontakt" class="alt-bg">
-        <h2>📞 Kontaktujte nás</h2>
+        <h2
+            style="color: #93c5fd !important; font-weight: 600 !important; font-size: 2.5rem !important; text-align: center !important; margin-bottom: 50px !important; padding-top: 50px !important;">
+            Kontaktujte nás
+        </h2>
 
         <p style="text-align:center; opacity:0.9; margin-bottom:2rem;">
             Zavolejte nám nebo napište. Jsme tu pro vás.
@@ -258,7 +1377,7 @@
 
                     <p class="note">
                         Vaše údaje použijeme pouze pro odpověď na zprávu.<br>
-                        Viz <a href="./legal/legal/ochrana-osobnich-udaju.html" target="_blank">
+                        Viz <a href="./ochrana-osobnich-udaju.html" target="_blank">
                             Zásady zpracování osobních údajů
                         </a>.
                     </p>
@@ -274,21 +1393,23 @@
             class="footer-content max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left">
 
             <div class="footer-logo">
-                <h3 class="text-2xl font-bold text-white mb-2">🌌 Chytré já</h3>
+                <h3 class="text-2xl font-bold text-white mb-2">Chytré já</h3>
                 <p class="text-gray-400 text-sm leading-relaxed">
-                    Tvoje digitální vědomí pro řízení firmy i života.
+                    Hry pro řízení firem i života.
                 </p>
             </div>
 
             <div class="footer-links">
                 <a href="#kontakt">Kontakt</a>
-                <a href="./legal/obchodni-podminky.html">Obchodní podmínky</a>
-                <a href="./legal/ochrana-osobnich-udaju.html">GDPR</a>
-                <a href="./legal/cookies.html">Cookies</a>
+                <a href="./obchodni-podminky.html">Obchodní podmínky</a>
+                <a href="./ochrana-osobnich-udaju.html">GDPR</a>
+                <a href="./cookies.html">Cookies</a>
             </div>
-
+            <div class="footer-brand-alt">
+                🇨🇿 Chytré já ↔ 🌍 SmartSelf
+            </div>
             <div class="footer-copy">
-                © 2025 Chytré já. Všechna práva vyhrazena.
+                © 2026 Chytré já. Všechna práva vyhrazena.
             </div>
         </div>
     </footer>
@@ -328,32 +1449,65 @@
         </div>
     </div>
 
-    <!-- <script src="/public/assets/js/cookies.js"></script> -->
+    <style>
+        #sokrates-hint {
+            position: fixed;
+            background: rgba(15, 23, 42, 0.95);
+            /* Tmavé pozadí jako v panelu */
+            border: 1px solid #60a5fa;
+            /* Ledově modrá linka */
+            color: #e2e8f0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            z-index: 9999;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            max-width: 280px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
 
-    <!-- ===== CHYTRÉ JÁ CHAT WIDGET ===== -->
-    <div id="cj-widget-btn">
-        <div class="cj-icon">
-            <i class="fa-solid fa-brain"></i>
-        </div>
-    </div>
+        /* Toto vytvoří to modré kolečko kolem šipky */
+        #sokrates-send {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #2563eb;
+            /* Krásná modrá */
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            /* Tady vzniká to kolečko */
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            padding: 0;
+            line-height: 1;
+        }
 
-    <div id="cj-widget-panel">
-        <div class="cj-header">
-            <span>
-                <i class="fa-solid fa-brain"></i> Chytré já
-            </span>
-            <button id="cj-close">✖</button>
-        </div>
+        #sokrates-send:hover {
+            background: #3b82f6;
+            /* Světlejší modrá při najetí */
+            transform: translateY(-50%) scale(1.1);
+        }
 
-        <div id="cj-messages" class="cj-messages"></div>
+        /* Jemné doladění pozice šipky, aby byla přesně uprostřed */
+        #sokrates-send span,
+        #sokrates-send {
+            font-size: 1.2rem;
+        }
+    </style>
 
-        <div class="cj-input-row">
-            <input id="cj-input" type="text" placeholder="Napiš dotaz…" />
-            <button id="cj-send">➤</button>
-        </div>
-    </div>
+    <div id="sokrates-hint"></div>
+    <script src="./assets/js/landing.js"></script>
 
-    <script type="module" src="/assets/js/cj-widget.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ochrana osobních údajů | Sokrates</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Inter", system-ui, sans-serif;
+            background: #0b1220;
+            color: #e2e8f0;
+            line-height: 1.75;
+        }
+
+        /* 🔙 Stejné tlačítko jako GDPR */
+        .back-btn {
+            display: inline-block;
+            margin: 20px;
+            background: #1e293b;
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: #93c5fd;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .back-btn:hover {
+            background: #273449;
+            color: #a8c7ff;
+        }
+
+        /* Toolbar jako viewer */
+        #viewer-toolbar {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(6px);
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 100;
+        }
+
+        #viewer-toolbar button {
+            padding: 8px 18px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #a5f3fc;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: 0.15s ease;
+        }
+
+        #viewer-toolbar button:hover {
+            background: #334155;
+            color: #e0f2fe;
+        }
+
+        main {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 2rem 1.2rem 3rem;
+        }
+
+        .doc-box {
+            background: rgba(30, 41, 59, 0.55);
+            border-radius: 12px;
+            padding: 2rem 2.2rem;
+            box-shadow: 0 0 28px rgba(0, 0, 0, 0.35);
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #a8c7ff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 8px rgba(96, 165, 250, 0.3);
+        }
+
+        h2 {
+            color: #7dd3fc;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        p,
+        ul {
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+        }
+
+        a {
+            color: #7dd3fc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #bae6fd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Toolbar stejné jako viewer -->
+    <a href="#" onclick="history.back(); return false;" class="back-btn">← Zpět</a>
+
+    <main>
+        <div class="doc-box">
+
+            <h1>Ochrana osobních údajů (GDPR)</h1>
+
+            <p>
+                Pokud jste naším zákazníkem, účastníkem webinářů, seminářů či workshopů, odběratelem emailů nebo "jen"
+                návštěvníkem těchto stránek, svěřujete nám své osobní údaje. My zodpovídáme za jejich ochranu a
+                zabezpečení.
+                Přečtěte si proto, jak je chráníme, a jaká práva máte vy v souvislosti s GDPR (Nařízení o ochraně
+                osobních
+                údajů). Jestliže vám nebude cokoliv jasné, neváhejte se na nás obrátit.
+            </p>
+
+            <h2>Kdo je správce?</h2>
+            <p>
+                Jsme společnost <strong>ITING s.r.o.</strong>, IČO:25970631, se sídlem Vančurova 2710, 544 01 Dvůr
+                Králové nad Labem,
+                zapsaná u Krajského Soudu v Hradci Králové, odd. C, vložka 18164 , která provozuje webové stránky
+                <strong>iting.cz</strong>.
+                Vaše osobní údaje zpracováváme jako správce, tj. určujeme, jak budou zpracovávány, za jakým účelem a po
+                jak
+                dlouhou dobu a vybíráme případné další zpracovatele, kteří nám se zpracováním budou pomáhat.
+            </p>
+
+            <h2>Kontaktní údaje</h2>
+            <p>
+                Pokud se na nás budete chtít v průběhu zpracování obrátit, můžete nás kontaktovat na emailu:
+                <a href="mailto:info@iting.cz"><strong>info@iting.cz</strong></a>.
+            </p>
+
+            <h2>Prohlašujeme</h2>
+            <p>
+                Prohlašujeme, že jako správce vašich osobních údajů splňujeme veškeré zákonné povinnosti vyžadované
+                platnou
+                legislativou, zejména zákonem o ochraně osobních údajů a GDPR, a tedy že:
+            </p>
+
+            <ul>
+                <li>budeme zpracovávat vaše osobní údaje jen na základě platného právního důvodu,</li>
+                <li>plníme dle článku 13 GDPR informační povinnost,</li>
+                <li>umožníme vám uplatňovat a chránit vaše práva.</li>
+            </ul>
+
+            <h2>Rozsah osobních údajů a účely zpracování</h2>
+            <p>Zpracováváme osobní údaje, které nám svěříte sami, a to z následujících důvodů:</p>
+
+            <p><strong>Poskytování služeb a plnění smlouvy.</strong></p>
+            <p>
+                Vaše údaje potřebujeme například k zaslání přístupů, vystavení faktur, komunikaci nebo dodání produktů.
+            </p>
+
+            <p><strong>Vedení účetnictví.</strong></p>
+            <p>
+                Fakturační údaje musíme zpracovávat na základě právní povinnosti.
+            </p>
+
+            <p><strong>Přímý marketing.</strong></p>
+            <p>
+                Na základě oprávněného zájmu zasíláme informace a novinky z oblasti našich služeb. Odhlásit se můžete
+                kdykoliv.
+            </p>
+
+            <p><strong>Pokročilý marketing na základě souhlasu.</strong></p>
+            <p>
+                Týká se například remarketingu na sociálních sítích.
+            </p>
+
+            <p><strong>Fotografie a videozáznamy z akcí.</strong></p>
+            <p>
+                Pořizujeme je jen s vaším souhlasem. Pokud nechcete být zaznamenáni, dejte nám vědět před akcí.
+            </p>
+
+            <h2>Cookies</h2>
+            <p>
+                Při procházení našich webových stránek zaznamenáváme IP adresu, délku návštěvy a stránky, které
+                navštívíte.
+                Pro měření návštěvnosti jde o oprávněný zájem správce.
+            </p>
+
+            <p>Cookies pro cílení reklamy ukládáme pouze s vaším souhlasem.</p>
+
+            <h2>Zabezpečení osobních údajů</h2>
+            <p>
+                Vaše osobní údaje chráníme moderními technickými a organizačními opatřeními tak,
+                jako by šlo o naše vlastní.
+            </p>
+
+            <h2>Předání osobních údajů třetím stranám</h2>
+            <p>
+                Přístup mají jen naši zaměstnanci a partneři vázaní mlčenlivostí.
+            </p>
+
+            <p>
+                Pokud využíváme externí zpracovatele (účtárna, host­ing, mailing, IT), vždy jen takové,
+                kteří splňují GDPR.
+            </p>
+
+            <h2>Předávání dat mimo EU</h2>
+            <p>Data zpracováváme jen v EU nebo v zemích s odpovídající ochranou.</p>
+
+            <h2>Vaše práva</h2>
+
+            <ul>
+                <li>Právo na informace</li>
+                <li>Právo na přístup</li>
+                <li>Právo na opravu</li>
+                <li>Právo na omezení zpracování</li>
+                <li>Právo na přenositelnost</li>
+                <li>Právo na výmaz („být zapomenut“)</li>
+                <li>Právo podat stížnost u ÚOOÚ</li>
+            </ul>
+
+            <h2>Mlčenlivost</h2>
+            <p>
+                Všichni, kdo zpracovávají vaše osobní údaje, jsou vázáni mlčenlivostí. Ta trvá i po skončení spolupráce.
+            </p>
+
+            <p><em>Tyto zásady jsou účinné od 25. 5. 2018.</em></p>
+
+        </div>
+    </main>
+</body>
+
+</html>

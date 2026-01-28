@@ -102,8 +102,9 @@
 
         <!-- Dlouhověkost -->
         <g id="longevity" transform="translate(320,200)">
-            <circle cx="0" cy="0" r="24" fill="url(#starGrad)" filter="url(#glow)"/>
-            <text x="0" y="-36" class="star-label">Dlouhověkost</text>
+        <circle cx="0" cy="0" r="150" fill="transparent" pointer-events="all" />
+           <!-- <circle cx="0" cy="0" r="24" fill="url(#starGrad)" filter="url(#glow)"/> -->
+            <text x="0" y="-36" class="star-label">Dlouhověk</text>
 
             <g class="orbit-local">
                 <circle class="orbit-path" cx="0" cy="0" r="90"/>
@@ -132,8 +133,9 @@
 
         <!-- Strategie -->
         <g id="strategy" transform="translate(880,200)">
-            <circle cx="0" cy="0" r="24" fill="url(#starGrad)" filter="url(#glow)"/>
-            <text x="0" y="-36" class="star-label">Strategie</text>
+        <circle cx="0" cy="0" r="150" fill="transparent" pointer-events="all" />
+          <!--  <circle cx="0" cy="0" r="24" fill="url(#starGrad)" filter="url(#glow)"/> -->
+            <text x="0" y="-36" class="star-label">Stratég</text>
 
             <g class="orbit-local">
                 <circle class="orbit-path" cx="0" cy="0" r="110"/>
@@ -157,7 +159,8 @@
 
         <!-- TOC -->
         <g id="toc" transform="translate(850,560)">
-            <circle cx="0" cy="0" r="24" fill="url(#starGrad)" filter="url(#glow)"/>
+        <circle cx="0" cy="0" r="150" fill="transparent" pointer-events="all" />
+             <!--<circle cx="0" cy="0" r="24" fill="url(#starGrad)" filter="url(#glow)"/> -->
             <text x="0" y="-36" class="star-label">TOC</text>
 
             <g class="orbit-local">
@@ -189,7 +192,7 @@
     </g>
 
     <text x="600" y="820" class="tag" style="fill:#8fb0ff; font-size:13px;">
-        Galaxie Chytrého já – tři světy řízení života a firmy
+      <!--  Galaxie Chytrého já – tři světy řízení života a firmy -->
     </text>
 
 </svg>

@@ -1,15 +1,15 @@
 /* ================================================
-   MEDIOTÉKA – FINÁLNÍ FUNKČNÍ VERZE
+   MEDIOTÉKA – FINÁLNÍ VERZE PRO iting.cz
    ================================================ */
 
 console.log("🔥 medioteka.js NAČTEN");
 
 /* ------------------------------------------------
-   1) LOAD LIBRARY
+   1) LOAD LIBRARY (JSON)
    ------------------------------------------------ */
 async function loadLibrary() {
   try {
-    const res = await fetch("/web/assets/data/models/medioteka.json");
+    const res = await fetch("./data/medioteka.json");
     if (!res.ok) throw new Error("Soubor medioteka.json nenalezen");
 
     const data = await res.json();
@@ -23,38 +23,18 @@ async function loadLibrary() {
 }
 
 /* ------------------------------------------------
-   2) GENERÁTOR SPRÁVNÝCH URL
+   2) RESOLVE URL – BEZ MAGIE
    ------------------------------------------------ */
 function resolveMediaUrl(item) {
-
-  switch (item.type) {
-
-    case "audio":
-      return `/public/media/audio/${item.url}`;
-
-    case "video":
-      if (item.url.startsWith("http")) return item.url;
-      return `/public/media/video/${item.url}`;
-
-    case "image":
-      return `/public/images/${item.url.replace("media/images/", "")}`;
-
-    case "pdf":
-      return `/public/media/pdf/${item.url.replace("media/pdf/", "")}`;
-
-    case "article":
-      return `/public/${item.contentUrl}`;
-
-    default:
-      return item.url;
-  }
+  if (item.type === "video") return item.url;
+  if (item.type === "article") return item.contentUrl;
+  return item.url;
 }
 
 /* ------------------------------------------------
    3) RENDER GRID – KARTY
    ------------------------------------------------ */
 function renderMediaGrid(items) {
-
   const grid = document.getElementById("mediaGrid");
   grid.innerHTML = "";
 
@@ -67,43 +47,42 @@ function renderMediaGrid(items) {
   };
 
   grid.innerHTML = items.map(item => `
-        <div class="medioteka-card" onclick="openMediaModal('${item.id}')">
-            <div class="medioteka-card-icon">${icons[item.type] || "📄"}</div>
-            <div class="medioteka-card-title">${item.title}</div>
-            <div class="medioteka-card-desc">${item.description || ""}</div>
-            <div class="medioteka-card-tag">${item.type.toUpperCase()}</div>
-        </div>
-    `).join("");
+    <div class="medioteka-card" onclick="openMediaModal('${item.id}')">
+      <div class="medioteka-card-icon">${icons[item.type] || "📄"}</div>
+      <div class="medioteka-card-title">${item.title}</div>
+      <div class="medioteka-card-desc">${item.description || ""}</div>
+      <div class="medioteka-card-tag">${item.type.toUpperCase()}</div>
+    </div>
+  `).join("");
 }
 
 /* ------------------------------------------------
    4) VIEWER – MODÁL
    ------------------------------------------------ */
 window.openMediaModal = function (id) {
-
   const item = window.MEDIA_ITEMS.find(x => x.id === id);
   if (!item) return;
 
   const url = resolveMediaUrl(item);
-
   let content = "";
 
   switch (item.type) {
 
     case "audio":
       content = `
-                <audio controls class="medioteka-audio">
-                    <source src="${url}" type="audio/mpeg">
-                </audio>`;
+        <audio controls class="medioteka-audio">
+          <source src="${url}" type="audio/mpeg">
+        </audio>`;
       break;
 
     case "video":
       content = `
-                <div class="video-wrapper">
-                    <iframe src="${url}" frameborder="0"
-                        allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-                    </iframe>
-                </div>`;
+        <div class="video-wrapper">
+          <iframe src="${url}" frameborder="0"
+            allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+          </iframe>
+        </div>`;
       break;
 
     case "image":
@@ -115,7 +94,7 @@ window.openMediaModal = function (id) {
       break;
 
     case "article":
-      fetch(`/public/${item.contentUrl}`)
+      fetch(item.contentUrl)
         .then(res => res.text())
         .then(txt => {
           document.getElementById("modalContent").innerHTML =
@@ -129,42 +108,35 @@ window.openMediaModal = function (id) {
 };
 
 /* ------------------------------------------------
-   ZAVŘENÍ MODÁLU
+   5) ZAVŘENÍ MODÁLU
    ------------------------------------------------ */
-export function closeMediaModal() {
+function closeMediaModal() {
   document.getElementById("mediaModal").classList.add("hidden");
 }
 
 document.addEventListener("click", (e) => {
   const modal = document.getElementById("mediaModal");
-  const content = document.getElementById("modalContent");
-
   if (!modal || modal.classList.contains("hidden")) return;
-
-  if (e.target === modal) closeMediaModal();
-});
-
-document.addEventListener("click", (e) => {
-  if (e.target.matches(".medioteka-modal-close")) closeMediaModal();
+  if (e.target === modal || e.target.matches(".medioteka-modal-close")) {
+    closeMediaModal();
+  }
 });
 
 /* ------------------------------------------------
-   5) PREFIX VYHLEDÁVÁNÍ
+   6) VYHLEDÁVÁNÍ
    ------------------------------------------------ */
 const searchInput = document.getElementById("searchInput");
 
 searchInput.addEventListener("input", () => {
   const q = searchInput.value.toLowerCase().trim();
-
   const filtered = window.MEDIA_ITEMS.filter(item =>
-    item.title.toLowerCase().startsWith(q)
+    item.title.toLowerCase().includes(q)
   );
-
   renderMediaGrid(filtered);
 });
 
 /* ------------------------------------------------
-   6) INIT
+   7) INIT
    ------------------------------------------------ */
 async function initMedioteka() {
   console.log("🚀 initMedioteka()");

@@ -69,3 +69,19 @@
         justify-content: center;
     }
 }
+
+.footer-brand-alt {
+    margin-top: 1.2rem;
+    font-size: 0.9rem;
+    opacity: 0.75;
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-note {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}

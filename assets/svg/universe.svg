@@ -104,7 +104,7 @@
         <g id="longevity" transform="translate(320,200)">
         <circle cx="0" cy="0" r="150" fill="transparent" pointer-events="all" />
            <!-- <circle cx="0" cy="0" r="24" fill="url(#starGrad)" filter="url(#glow)"/> -->
-            <text x="0" y="-36" class="star-label">Dlouhověk</text>
+            <text x="0" y="-36" class="star-label">Stoletý desetibojař</text>
 
             <g class="orbit-local">
                 <circle class="orbit-path" cx="0" cy="0" r="90"/>
@@ -135,7 +135,7 @@
         <g id="strategy" transform="translate(880,200)">
         <circle cx="0" cy="0" r="150" fill="transparent" pointer-events="all" />
           <!--  <circle cx="0" cy="0" r="24" fill="url(#starGrad)" filter="url(#glow)"/> -->
-            <text x="0" y="-36" class="star-label">Stratég</text>
+            <text x="0" y="-36" class="star-label">Byznys modely</text>
 
             <g class="orbit-local">
                 <circle class="orbit-path" cx="0" cy="0" r="110"/>
@@ -161,7 +161,7 @@
         <g id="toc" transform="translate(850,560)">
         <circle cx="0" cy="0" r="150" fill="transparent" pointer-events="all" />
              <!--<circle cx="0" cy="0" r="24" fill="url(#starGrad)" filter="url(#glow)"/> -->
-            <text x="0" y="-36" class="star-label">TOC</text>
+            <text x="0" y="-36" class="star-label">Teorie omezení</text>
 
             <g class="orbit-local">
                 <circle class="orbit-path" cx="0" cy="0" r="120"/>

@@ -8,9 +8,14 @@ const elements = {
   hint: document.getElementById('sokrates-hint'),
   input: document.getElementById('sokrates-input'),
   sendBtn: document.getElementById('sokrates-send'),
+  micBtn: document.getElementById('sokrates-mic'),
   response: document.getElementById('ai-response-text'),
   waves: document.getElementById('wave-visualizer')
 };
+
+// Speech Recognition
+let recognition = null;
+let isListening = false;
 
 // ========================================
 // 1. SVG UNIVERSE HINTS
@@ -18,16 +23,16 @@ const elements = {
 
 const games = {
   'longevity': {
-    title: 'Hra: Stoletý desetibojař',
-    text: 'Sokrates: Máte 70% šanci na aktivní pohyb v 85 letech.'
+    title: 'Vesmír: Stoletý desetibojař',
+    text: 'Chytré já: Máte 70% šanci na aktivní pohyb v 85 letech.'
   },
   'strategy': {
-    title: 'Hra o modrý oceán',
-    text: 'Sokrates: Váš byznys model je z 85 % validní.'
+    title: 'Vesmír: Byznys modely',
+    text: 'Chytré já: Váš byznys model je z 87 % validní.'
   },
   'toc': {
-    title: 'Hra o průtok',
-    text: 'Sokrates: Průtok byznysu klesl na 82 %. Úzké místo v expedici.'
+    title: 'Vesmír: Teorie omezení (TOC)',
+    text: 'Chytré já: Průtok byznysu klesl na 11 %. Úzké místo je v expedici.'
   }
 };
 
@@ -95,6 +100,119 @@ const lokalniVedomi = {
   "default": "Tento vhled zatím ve tvém vesmíru nevidím, ale můžeme ho začít měřit."
 };
 
+// ========================================
+// SPEECH RECOGNITION (MIC)
+// ========================================
+
+function initSpeechRecognition() {
+  // Check browser support
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    console.warn('⚠️ Speech Recognition not supported in this browser');
+    if (elements.micBtn) {
+      elements.micBtn.style.opacity = '0.3';
+      elements.micBtn.style.cursor = 'not-allowed';
+      elements.micBtn.title = 'Váš prohlížeč nepodporuje rozpoznávání řeči';
+    }
+    return false;
+  }
+
+  recognition = new SpeechRecognition();
+  recognition.lang = 'cs-CZ';
+  recognition.continuous = false;
+  recognition.interimResults = true;
+
+  // When speech is recognized
+  recognition.onresult = (event) => {
+    const transcript = Array.from(event.results)
+      .map(result => result[0].transcript)
+      .join('');
+
+    if (elements.input) {
+      elements.input.value = transcript;
+    }
+  };
+
+  // When recognition ends
+  recognition.onend = () => {
+    isListening = false;
+    updateMicButton();
+
+    // Auto-send if we have text
+    if (elements.input && elements.input.value.trim()) {
+      setTimeout(() => askSokrates(), 300);
+    }
+  };
+
+  // On error
+  recognition.onerror = (event) => {
+    console.error('❌ Speech recognition error:', event.error);
+    isListening = false;
+    updateMicButton();
+
+    if (event.error === 'no-speech') {
+      console.log('ℹ️ No speech detected');
+    }
+  };
+
+  console.log('✅ Speech recognition initialized');
+  return true;
+}
+
+function toggleMicrophone() {
+  if (!recognition) {
+    console.warn('⚠️ Speech recognition not available');
+    return;
+  }
+
+  if (isListening) {
+    // Stop listening
+    recognition.stop();
+    isListening = false;
+  } else {
+    // Start listening
+    try {
+      recognition.start();
+      isListening = true;
+
+      // Clear input when starting
+      if (elements.input) {
+        elements.input.value = '';
+        elements.input.placeholder = 'Poslouchám...';
+      }
+    } catch (error) {
+      console.error('❌ Failed to start recognition:', error);
+      isListening = false;
+    }
+  }
+
+  updateMicButton();
+}
+
+function updateMicButton() {
+  if (!elements.micBtn) return;
+
+  if (isListening) {
+    // Recording state
+    elements.micBtn.style.background = 'rgba(239, 68, 68, 0.2)';
+    elements.micBtn.style.borderColor = '#ef4444';
+    elements.micBtn.style.color = '#ef4444';
+    elements.micBtn.classList.add('recording');
+  } else {
+    // Idle state
+    elements.micBtn.style.background = 'rgba(59, 130, 246, 0.2)';
+    elements.micBtn.style.borderColor = '#3b82f6';
+    elements.micBtn.style.color = '#3b82f6';
+    elements.micBtn.classList.remove('recording');
+
+    // Reset placeholder
+    if (elements.input) {
+      elements.input.placeholder = 'Zeptejte se na svůj vesmír...';
+    }
+  }
+}
+
 async function askSokrates() {
   if (!elements.input || !elements.response) {
     console.error('❌ Chat elements not found');
@@ -128,7 +246,10 @@ async function askSokrates() {
     if (!res.ok) throw new Error(`API error: ${res.status}`);
 
     const data = await res.json();
-    elements.response.innerText = `"${data.answer}"`;
+    const answer = data.answer || data.response || "Odpověď nedostupná";
+
+    elements.response.innerText = `"${answer}"`;
+
     console.log('✅ API response received');
 
   } catch (error) {
@@ -139,8 +260,10 @@ async function askSokrates() {
       question.toLowerCase().includes(k)
     ) || "default";
 
+    const answer = lokalniVedomi[key];
+
     setTimeout(() => {
-      elements.response.innerText = `"${lokalniVedomi[key]}"`;
+      elements.response.innerText = `"${answer}"`;
     }, 600);
   } finally {
     setTimeout(() => {
@@ -159,7 +282,15 @@ function initSokratesChat() {
     return;
   }
 
-  // Click handler
+  // Initialize speech recognition
+  initSpeechRecognition();
+
+  // Microphone click handler
+  if (elements.micBtn) {
+    elements.micBtn.addEventListener('click', toggleMicrophone);
+  }
+
+  // Send button click handler
   elements.sendBtn.addEventListener('click', askSokrates);
 
   // Enter key handler

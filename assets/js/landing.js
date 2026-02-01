@@ -1,25 +1,15 @@
 // ========================================
-// SOKRATES LANDING PAGE - Clean Version
+// LANDING PAGE — čistá verze
 // ========================================
 
-// DOM Elements
-const elements = {
-  universeObj: document.querySelector('object[data*="universe.svg"]'),
-  hint: document.getElementById('sokrates-hint'),
-  input: document.getElementById('sokrates-input'),
-  sendBtn: document.getElementById('sokrates-send'),
-  micBtn: document.getElementById('sokrates-mic'),
-  response: document.getElementById('ai-response-text'),
-  waves: document.getElementById('wave-visualizer')
+// ========================================
+// 1. UNIVERSE HINTS (hover na SVG)
+// ========================================
+
+const universeHints = {
+  obj: document.querySelector('object[data*="universe.svg"]'),
+  hint: document.getElementById('sokrates-hint')
 };
-
-// Speech Recognition
-let recognition = null;
-let isListening = false;
-
-// ========================================
-// 1. SVG UNIVERSE HINTS
-// ========================================
 
 const games = {
   'longevity': {
@@ -37,292 +27,340 @@ const games = {
 };
 
 function initUniverseHints() {
-  if (!elements.universeObj || !elements.hint) {
-    console.warn('⚠️ Universe SVG or hint element not found');
-    return;
-  }
+  if (!universeHints.obj) return;
 
-  elements.universeObj.addEventListener('load', () => {
-    const svgDoc = elements.universeObj.contentDocument;
-
-    if (!svgDoc) {
-      console.error('❌ Cannot access SVG document');
-      return;
-    }
+  universeHints.obj.addEventListener('load', () => {
+    const svgDoc = universeHints.obj.contentDocument;
+    if (!svgDoc) return;
 
     Object.keys(games).forEach(id => {
       const group = svgDoc.getElementById(id);
-
-      if (!group) {
-        console.warn(`⚠️ SVG group "${id}" not found`);
-        return;
-      }
+      if (!group) return;
 
       group.style.cursor = 'pointer';
 
       group.addEventListener('mouseenter', () => {
-        elements.hint.innerHTML = `
-          <strong style="color:#60a5fa; display:block; margin-bottom:4px;">
-            ${games[id].title}
-          </strong>
+        if (!universeHints.hint) return;
+        universeHints.hint.innerHTML = `
+          <strong style="color:#60a5fa; display:block; margin-bottom:4px;">${games[id].title}</strong>
           ${games[id].text}
         `;
-        elements.hint.style.opacity = '1';
+        universeHints.hint.style.opacity = '1';
       });
 
       group.addEventListener('mousemove', (e) => {
-        const rect = elements.universeObj.getBoundingClientRect();
-        elements.hint.style.left = (rect.left + e.clientX + 20) + 'px';
-        elements.hint.style.top = (rect.top + e.clientY + 20) + 'px';
+        if (!universeHints.hint) return;
+        const rect = universeHints.obj.getBoundingClientRect();
+        universeHints.hint.style.left = (rect.left + e.clientX + 20) + 'px';
+        universeHints.hint.style.top = (rect.top + e.clientY + 20) + 'px';
       });
 
       group.addEventListener('mouseleave', () => {
-        elements.hint.style.opacity = '0';
+        if (universeHints.hint) universeHints.hint.style.opacity = '0';
       });
     });
-
-    console.log('✅ Universe hints initialized');
-  });
-
-  elements.universeObj.addEventListener('error', () => {
-    console.error('❌ Failed to load universe.svg');
   });
 }
 
 // ========================================
-// 2. SOKRATES CHAT
+// 2. BATERIE ANIMACE
 // ========================================
 
-const lokalniVedomi = {
-  "hra": "Hra je pro nás simulace reality. Například ve Hře o průtok naši klienti často zjistí, že 80 % jejich úsilí jde do míst, která nebrzdí výsledek.",
-  "kdo": "Sokrates je interpret vašeho digitálního vesmíru. Propojujeme biometrická data s vaším konáním.",
-  "průtok": "Průtok (TOC) je srdcem naší metodiky. Identifikujeme úzká místa, která brzdí váš růst.",
-  "default": "Tento vhled zatím ve tvém vesmíru nevidím, ale můžeme ho začít měřit."
-};
+function animateBattery(targetValue) {
+  const fill = document.getElementById('js-battery-fill');
+  const counter = document.querySelector('.battery-val');
+  if (!fill || !counter) return;
+
+  // Reset + animate fill
+  fill.style.width = '0%';
+  setTimeout(() => {
+    fill.style.width = targetValue + '%';
+    fill.style.filter = 'brightness(1.3)';
+    setTimeout(() => { fill.style.filter = 'none'; }, 700);
+  }, 200);
+
+  // Animate counter (tachometr)
+  let current = 0;
+  const duration = 2000;
+  const fps = 60;
+  const frameTime = 1000 / fps;
+  const totalFrames = Math.round(duration / frameTime);
+  const increment = targetValue / totalFrames;
+
+  const interval = setInterval(() => {
+    current += increment;
+    if (current >= targetValue) {
+      counter.innerHTML = `${targetValue}<span>%</span>`;
+      clearInterval(interval);
+    } else {
+      counter.innerHTML = `${Math.floor(current)}<span>%</span>`;
+    }
+  }, frameTime);
+}
 
 // ========================================
-// SPEECH RECOGNITION (MIC)
+// 3. CHIP INTERACTIONS
 // ========================================
 
-function initSpeechRecognition() {
-  // Check browser support
+let hideTimeout = null;
+
+function showResult(text, autoHide = true) {
+  const resultDiv = document.getElementById('interactive-result');
+  if (!resultDiv) return;
+
+  if (hideTimeout) clearTimeout(hideTimeout);
+
+  resultDiv.innerHTML = text.replace(/\n/g, '<br>');
+  resultDiv.classList.add('visible');
+
+  setTimeout(() => {
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 100);
+
+  if (autoHide) {
+    hideTimeout = setTimeout(() => {
+      resultDiv.classList.remove('visible');
+    }, 10000);
+  }
+}
+
+function initChipInteractions() {
+  const chips = document.querySelectorAll('.chip');
+  if (!chips.length) return;
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', async () => {
+      const action = chip.dataset.action;
+
+      // Visual feedback
+      chip.style.transform = 'scale(0.95)';
+      setTimeout(() => { chip.style.transform = ''; }, 150);
+
+      showResult('⏳ Načítám informace...', false);
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question: chip.textContent.trim() })
+        });
+
+        if (!response.ok) throw new Error('API error');
+
+        const data = await response.json();
+        const answer = data.answer || data.response || 'Momentálně nedostupné.';
+        showResult(`💬 ${answer}`);
+
+      } catch (error) {
+        const fallback = fallbacks[action] || '💬 Zajímavá otázka! Pro plnou odpověď se přihlaste do aplikace.';
+        showResult(fallback);
+      }
+    });
+  });
+}
+
+// ========================================
+// 4. WAVEFORM (VLNKY) — hlasové zadání
+// ========================================
+
+function initWaveformInteraction() {
+  const waveformBox = document.querySelector('.waveform-box');
+  if (!waveformBox) return;
+
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
   if (!SpeechRecognition) {
-    console.warn('⚠️ Speech Recognition not supported in this browser');
-    if (elements.micBtn) {
-      elements.micBtn.style.opacity = '0.3';
-      elements.micBtn.style.cursor = 'not-allowed';
-      elements.micBtn.title = 'Váš prohlížeč nepodporuje rozpoznávání řeči';
-    }
-    return false;
+    waveformBox.addEventListener('click', () => {
+      showResult('🎤 Hlasové ovládání není podporováno ve vašem prohlížeči.');
+    });
+    return;
   }
 
-  recognition = new SpeechRecognition();
+  const recognition = new SpeechRecognition();
   recognition.lang = 'cs-CZ';
   recognition.continuous = false;
-  recognition.interimResults = true;
+  recognition.interimResults = false;
 
-  // When speech is recognized
-  recognition.onresult = (event) => {
-    const transcript = Array.from(event.results)
-      .map(result => result[0].transcript)
-      .join('');
-
-    if (elements.input) {
-      elements.input.value = transcript;
-    }
-  };
-
-  // When recognition ends
-  recognition.onend = () => {
-    isListening = false;
-    updateMicButton();
-
-    // Auto-send if we have text
-    if (elements.input && elements.input.value.trim()) {
-      setTimeout(() => askSokrates(), 300);
-    }
-  };
-
-  // On error
-  recognition.onerror = (event) => {
-    console.error('❌ Speech recognition error:', event.error);
-    isListening = false;
-    updateMicButton();
-
-    if (event.error === 'no-speech') {
-      console.log('ℹ️ No speech detected');
-    }
-  };
-
-  console.log('✅ Speech recognition initialized');
-  return true;
-}
-
-function toggleMicrophone() {
-  if (!recognition) {
-    console.warn('⚠️ Speech recognition not available');
-    return;
-  }
-
-  if (isListening) {
-    // Stop listening
-    recognition.stop();
-    isListening = false;
-  } else {
-    // Start listening
+  waveformBox.addEventListener('click', () => {
     try {
       recognition.start();
-      isListening = true;
-
-      // Clear input when starting
-      if (elements.input) {
-        elements.input.value = '';
-        elements.input.placeholder = 'Poslouchám...';
-      }
+      waveformBox.classList.add('active');
+      showResult('🎤 Poslouchám...', false);
     } catch (error) {
-      console.error('❌ Failed to start recognition:', error);
-      isListening = false;
-    }
-  }
-
-  updateMicButton();
-}
-
-function updateMicButton() {
-  if (!elements.micBtn) return;
-
-  if (isListening) {
-    // Recording state
-    elements.micBtn.style.background = 'rgba(239, 68, 68, 0.2)';
-    elements.micBtn.style.borderColor = '#ef4444';
-    elements.micBtn.style.color = '#ef4444';
-    elements.micBtn.classList.add('recording');
-  } else {
-    // Idle state
-    elements.micBtn.style.background = 'rgba(59, 130, 246, 0.2)';
-    elements.micBtn.style.borderColor = '#3b82f6';
-    elements.micBtn.style.color = '#3b82f6';
-    elements.micBtn.classList.remove('recording');
-
-    // Reset placeholder
-    if (elements.input) {
-      elements.input.placeholder = 'Zeptejte se na svůj vesmír...';
-    }
-  }
-}
-
-async function askSokrates() {
-  if (!elements.input || !elements.response) {
-    console.error('❌ Chat elements not found');
-    return;
-  }
-
-  const question = elements.input.value.trim();
-
-  if (!question) return;
-
-  // Reset input
-  elements.input.value = "";
-
-  // Show thinking state
-  if (elements.waves) {
-    elements.waves.classList.remove('idle');
-    elements.waves.classList.add('thinking');
-  }
-
-  elements.response.style.opacity = "0.5";
-  elements.response.innerText = "Sokrates interpretuje...";
-
-  try {
-    // Pokus o API
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question })
-    });
-
-    if (!res.ok) throw new Error(`API error: ${res.status}`);
-
-    const data = await res.json();
-    const answer = data.answer || data.response || "Odpověď nedostupná";
-
-    elements.response.innerText = `"${answer}"`;
-
-    console.log('✅ API response received');
-
-  } catch (error) {
-    console.warn('⚠️ API unavailable, using fallback:', error.message);
-
-    // Fallback na lokální odpovědi
-    const key = Object.keys(lokalniVedomi).find(k =>
-      question.toLowerCase().includes(k)
-    ) || "default";
-
-    const answer = lokalniVedomi[key];
-
-    setTimeout(() => {
-      elements.response.innerText = `"${answer}"`;
-    }, 600);
-  } finally {
-    setTimeout(() => {
-      if (elements.waves) {
-        elements.waves.classList.remove('thinking');
-        elements.waves.classList.add('idle');
-      }
-      elements.response.style.opacity = "1";
-    }, 800);
-  }
-}
-
-function initSokratesChat() {
-  if (!elements.sendBtn || !elements.input) {
-    console.warn('⚠️ Chat elements not found');
-    return;
-  }
-
-  // Initialize speech recognition
-  initSpeechRecognition();
-
-  // Microphone click handler
-  if (elements.micBtn) {
-    elements.micBtn.addEventListener('click', toggleMicrophone);
-  }
-
-  // Send button click handler
-  elements.sendBtn.addEventListener('click', askSokrates);
-
-  // Enter key handler
-  elements.input.addEventListener('keydown', (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      askSokrates();
+      showResult('❌ Nepodařilo se spustit rozpoznávání řeči.');
     }
   });
 
-  console.log('✅ Sokrates chat initialized');
+  recognition.onresult = async (event) => {
+    const transcript = event.results[0][0].transcript;
+    showResult(`🎤 Slyšel jsem: "${transcript}"<br><br>⏳ Načítám odpověď...`, false);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: transcript })
+      });
+
+      if (!response.ok) throw new Error('API error');
+
+      const data = await response.json();
+      const answer = data.answer || data.response || 'Momentálně nedostupné.';
+      showResult(`🎤 "${transcript}"<br><br>💬 ${answer}`);
+
+    } catch (error) {
+      showResult(`🎤 "${transcript}"<br><br>💬 Pro plnou odpověď se přihlaste do aplikace!`);
+    }
+  };
+
+  recognition.onend = () => {
+    waveformBox.classList.remove('active');
+  };
+
+  recognition.onerror = (event) => {
+    waveformBox.classList.remove('active');
+    if (event.error === 'no-speech') {
+      showResult('🔇 Nebylo zachyceno žádné slovo. Zkuste to znovu.');
+    } else {
+      showResult('❌ Chyba rozpoznávání řeči. Zkuste to znovu.');
+    }
+  };
 }
 
 // ========================================
-// 3. INITIALIZATION
+// 5. HAMBURGER MENU
 // ========================================
 
-function initLanding() {
-  console.log('🚀 Initializing landing page...');
+function initHamburger() {
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (!hamburger || !navLinks) return;
 
-  try {
-    initUniverseHints();
-    initSokratesChat();
-    console.log('✅ Landing page ready');
-  } catch (error) {
-    console.error('❌ Landing initialization failed:', error);
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('active');
+  });
+}
+
+// ========================================
+// 6. PRICING TOGGLE
+// ========================================
+
+function initPricingToggle() {
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.pricing-content').forEach(c => c.classList.remove('active'));
+
+      btn.classList.add('active');
+      const target = btn.dataset.target;
+      document.getElementById(`pricing-${target}`).classList.add('active');
+    });
+  });
+}
+
+// ========================================
+// 7. GAME CARD CLICK → baterie animace
+// ========================================
+
+function initGameCardClick() {
+  const gameCard = document.querySelector('.game-card');
+  if (!gameCard) return;
+
+  gameCard.addEventListener('click', () => {
+    animateBattery(85);
+  });
+}
+
+// ========================================
+// INIT — vše spuštění po DOMContentLoaded
+// ========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  initUniverseHints();
+  initHamburger();
+  initPricingToggle();
+  initChipInteractions();
+  initWaveformInteraction();
+  initGameCardClick();
+  animateBattery(85);
+});
+const questions = [
+  "Jak si vedu v pohybové stabilitě?",
+  "Co se stane, když zvýším VO2 Max o 10 %?",
+  "Mám dostatek bílkovin pro svůj desetiboj?",
+  "Jaká je moje předpověď aktivního života?",
+  "Jak moje konzistence ovlivňuje baterii?"
+];
+
+let questionIndex = 0;
+let charIndex = 0;
+let isInteracted = false; // Pojistka proti přemazání odpovědi rotací
+
+function typeWriter() {
+  if (isInteracted) return; // Pokud uživatel klikl, rotace končí
+
+  const textElem = document.getElementById('rotating-text');
+  if (!textElem) return;
+
+  const currentQuestion = questions[questionIndex];
+
+  // Psaní textu
+  textElem.innerText = currentQuestion.substring(0, charIndex + 1);
+  charIndex++;
+
+  if (charIndex < currentQuestion.length) {
+    // Pokračujeme v psaní dalšího znaku
+    setTimeout(typeWriter, 60);
+  } else {
+    // Věta je dopsaná, počkáme a pak skočíme na další
+    setTimeout(() => {
+      if (isInteracted) return;
+      charIndex = 0;
+      questionIndex = (questionIndex + 1) % questions.length;
+      typeWriter();
+    }, 3000); // Tady to 3 sekundy "stojí" dopsané
   }
 }
 
-// Wait for DOM
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initLanding);
-} else {
-  initLanding();
+// Úprava tvé interakční funkce, aby zastavila psaní
+function handleCHJInteraction(action) {
+  isInteracted = true; // Zastaví cyklus typeWriter
+
+  const resultDiv = document.getElementById('rotating-text'); // Píšeme přímo do bubliny
+  const answer = fallbacks[action] || fallbacks['voice'];
+
+  if (resultDiv) {
+    resultDiv.innerText = answer;
+    // Odstraníme kurzor po interakci (volitelné)
+    resultDiv.style.borderRight = "none";
+  }
+}
+
+document.addEventListener('DOMContentLoaded', typeWriter);
+
+// Upravené odpovědi (Fallbacks)
+const fallbacks = {
+  zdravi: '⚖️ Tvoje Stabilita drží baterii na 85 %. Pokud ji udržíš, přidáváš si 5 let aktivního desetiboje bez omezení.',
+  telo: '💪 VO2 Max je motor tvých 85 %. Aktuálně jsi nad plánem, což ti dává obrovskou rezervu pro dlouhověkost.',
+  vyziva: '🥩 Pozor, tvoje svalová rezerva (bílkoviny) je pod limitem! Tvá baterie 85 % začne bez nápravy rychle klesat.',
+  mysl: '🧠 Mysl a konzistence jsou klíčem. Díky nim tvá baterie zůstane v zelených číslech i za 10 let.',
+  voice: '💬 Zajímavá otázka! Pro analýzu tvého hlasu se prosím přihlas do aplikace.'
+};
+
+function handleCHJInteraction(action) {
+  // Zastavíme rotaci, jakmile uživatel projeví zájem
+  clearInterval(rotationInterval);
+
+  const resultDiv = document.getElementById('interactive-result');
+  const bubbleBox = document.getElementById('ai-bubble-box'); // Můžeme psát i do bubliny
+
+  const text = fallbacks[action] || fallbacks['voice'];
+
+  // Zobrazení v interaktivním výsledku
+  if (resultDiv) {
+    resultDiv.innerText = text;
+    resultDiv.style.opacity = '1';
+    resultDiv.style.transform = 'translateY(0)';
+  }
 }

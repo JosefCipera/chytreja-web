@@ -54,7 +54,12 @@
     font-size: 0.82rem;
     color: #64748b;
     margin-bottom: 0.55rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
 }
+.footer-brand-alt svg { border-radius: 1px; }
 
 /* Bottom bar */
 .footer-bottom {

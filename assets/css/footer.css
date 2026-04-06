@@ -7,36 +7,26 @@
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     color: #94a3b8;
     padding: 2.5rem 1.5rem 0;
+    text-align: center;
 }
 
 .footer-content {
-    max-width: 1100px;
+    max-width: 700px;
     margin: 0 auto;
-}
-
-/* Main row: brand | links | brand-alt */
-.footer-main {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    padding-bottom: 2rem;
-    flex-wrap: wrap;
 }
 
 /* Brand */
 .footer-brand-name {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: #e2e8f0;
-    margin-bottom: 0.25rem;
-    letter-spacing: -0.01em;
+    margin-bottom: 0.2rem;
 }
 
 .footer-tagline {
     font-size: 0.82rem;
     color: #64748b;
-    margin: 0;
+    margin: 0 0 1.4rem;
 }
 
 /* Nav links */
@@ -45,6 +35,7 @@
     flex-wrap: wrap;
     gap: 0.25rem 1.4rem;
     justify-content: center;
+    margin-bottom: 1.1rem;
 }
 
 .footer-links a {
@@ -62,7 +53,7 @@
 .footer-brand-alt {
     font-size: 0.82rem;
     color: #475569;
-    white-space: nowrap;
+    margin-bottom: 2rem;
 }
 
 /* Bottom bar */
@@ -71,17 +62,4 @@
     padding: 1.1rem 0;
     font-size: 0.78rem;
     color: #334155;
-}
-
-/* Mobile */
-@media (max-width: 680px) {
-    .footer-main {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
-    }
-
-    .footer-links {
-        justify-content: flex-start;
-    }
 }

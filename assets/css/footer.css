@@ -1,12 +1,12 @@
 /* =============================
-   FOOTER – oddělený & stabilní
+   FOOTER – Chytré já
 ============================= */
 
 .site-footer {
-    background: #0f172a;
-    padding: 3rem 1rem 2rem;
+    background: #080e1f;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     color: #94a3b8;
+    padding: 2.5rem 1.5rem 0;
 }
 
 .footer-content {
@@ -14,74 +14,74 @@
     margin: 0 auto;
 }
 
-/* Logo blok */
-.footer-logo h3 {
-    color: #a8c7ff;
-    margin-bottom: 0.3rem;
-    font-size: 1.3rem;
+/* Main row: brand | links | brand-alt */
+.footer-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
-.footer-logo p {
-    font-size: 0.9rem;
-    color: #cbd5e1;
+/* Brand */
+.footer-brand-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
 }
 
-/* Odkazy */
+.footer-tagline {
+    font-size: 0.82rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Nav links */
 .footer-links {
     display: flex;
     flex-wrap: wrap;
+    gap: 0.25rem 1.4rem;
     justify-content: center;
-    gap: 1.3rem;
 }
 
 .footer-links a {
-    color: #60a5fa;
+    font-size: 0.83rem;
+    color: #64748b;
     text-decoration: none;
-    transition: .25s ease;
+    transition: color 0.2s;
 }
 
 .footer-links a:hover {
-    color: #93c5fd;
-    text-shadow: 0 0 6px rgba(96, 165, 250, 0.4);
+    color: #94a3b8;
 }
 
-/* Copyright */
-.footer-copy {
-    text-align: center;
-    margin-top: 1.5rem;
-    color: #64748b;
-    font-size: 0.85rem;
+/* Cross-brand */
+.footer-brand-alt {
+    font-size: 0.82rem;
+    color: #475569;
+    white-space: nowrap;
 }
 
-.footer-copy span {
-    color: #e2e8f0;
+/* Bottom bar */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.1rem 0;
+    font-size: 0.78rem;
+    color: #334155;
 }
 
-/* Responsivita */
-@media (max-width: 800px) {
-    .footer-content {
-        text-align: center;
-        grid-template-columns: 1fr;
-        gap: 2rem;
+/* Mobile */
+@media (max-width: 680px) {
+    .footer-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
     }
 
     .footer-links {
-        justify-content: center;
+        justify-content: flex-start;
     }
-}
-
-.footer-brand-alt {
-    margin-top: 1.2rem;
-    font-size: 0.9rem;
-    opacity: 0.75;
-    display: flex;
-    gap: 0.4rem;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.footer-note {
-    font-size: 0.75rem;
-    opacity: 0.7;
 }

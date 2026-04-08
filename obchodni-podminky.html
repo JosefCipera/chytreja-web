@@ -81,21 +81,9 @@
 <body>
 
     <!-- 🔙 Zpět -->
-    <a href="#" onclick="history.back(); return false;" class="back-btn">← Zpět</a>
+    <a href="/" class="back-btn">← Zpět na iting.cz</a>
     <script>
         function handleBack(e) {
-            // Pokud jsme v novém okně/tabu, prostě ho zavřeme
-            if (window.opener || window.history.length === 1) {
-                window.close();
-                // Pokud se okno nezavřelo (prohlížeče to někdy blokují), 
-                // zkusíme aspoň historii
-                e.preventDefault();
-                window.history.back();
-            } else {
-                // Pokud jsme ve stejném okně, zkusíme historii bez reloadu stránky
-                e.preventDefault();
-                window.history.back();
-            }
         }
     </script>
 

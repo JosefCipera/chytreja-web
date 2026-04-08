@@ -1323,9 +1323,9 @@
     <p class="footer-tagline">Hry pro řízení firem i života.</p>
     <div class="footer-links">
       <a href="#contact">Kontakt</a>
-      <a href="#">Obchodní podmínky</a>
-      <a href="#">GDPR</a>
-      <a href="#">Cookies</a>
+      <a href="/obchodni-podminky.html">Obchodní podmínky</a>
+      <a href="/ochrana-osobnich-udaju.html">GDPR</a>
+      <a href="/cookies.html">Cookies</a>
     </div>
     <div class="footer-brand-alt"><svg width="20" height="13" viewBox="0 0 20 13" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="6.5" fill="#fff"/><rect y="6.5" width="20" height="6.5" fill="#D7141A"/><polygon points="0,0 9,6.5 0,13" fill="#11457E"/></svg> Chytré já &nbsp;↔&nbsp; 🌍 SmartSelf</div>
     <div class="footer-bottom">
@@ -1345,7 +1345,8 @@
   const PROMPTS = [
     '> Identifikace (Jméno):',
     '> Spojení (E-mail):',
-    '> Mise (Zpráva):'
+    '> Mise (Zpráva):',
+    '> Souhlas se zpracováním osobních údajů? (ano / ne):'
   ];
 
   let step = 0, data = {}, currentBlock = null;
@@ -1439,19 +1440,36 @@
       addToBlock(currentBlock, val, 't-user');
       data.message = val;
       fadeBlock(currentBlock);
-      inputRow.style.display = 'none';
       step = 3;
-      const finalBlock = newBlock();
-      // Send to API
-      fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      }).catch(() => {}); // fire and forget — UI already shows success
+      // Show GDPR prompt with link
+      currentBlock = newBlock();
+      const gdprLine = document.createElement('div');
+      gdprLine.className = 't-sys';
+      gdprLine.innerHTML = '> Souhlas se zpracováním osobních údajů? &mdash; <a href="/ochrana-osobnich-udaju.html" target="_blank" style="color:#06b6d4;text-decoration:underline;">Zásady ochrany</a> &mdash; (ano / ne):';
+      currentBlock.appendChild(gdprLine);
+      body.scrollTop = body.scrollHeight;
+      showInput();
 
-      typeInBlock(finalBlock, '> [ STATUS: DATA_ODESLÁNA_DO_JÁDRA // SPOJENÍ_UKONČENO ]', 't-success', () => {
-        setTimeout(glitch, 150);
-      });
+    } else if (step === 3) {
+      const ans = val.toLowerCase().trim();
+      addToBlock(currentBlock, val, 't-user');
+      fadeBlock(currentBlock);
+      inputRow.style.display = 'none';
+      step = 4;
+      const finalBlock = newBlock();
+      if (ans === 'ano') {
+        // Send to API
+        fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).catch(() => {});
+        typeInBlock(finalBlock, '> [ STATUS: DATA_ODESLÁNA_DO_JÁDRA // SPOJENÍ_UKONČENO ]', 't-success', () => {
+          setTimeout(glitch, 150);
+        });
+      } else {
+        typeInBlock(finalBlock, '> [ STATUS: PŘENOS_ZRUŠEN // Bez souhlasu zprávu neodešleme. ]', 't-error', () => {});
+      }
     }
   }
 
@@ -1462,7 +1480,7 @@
     const cur = document.getElementById('t-cur');
     if (cur) cur.style.display = input.value ? 'none' : 'inline-block';
   });
-  body.addEventListener('click', () => { if (step < 3) input.focus(); });
+  body.addEventListener('click', () => { if (step < 4) input.focus(); });
 
   // Start immediately with first question
   askStep();

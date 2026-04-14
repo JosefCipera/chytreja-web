@@ -2,8 +2,8 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const TEAM_EMAIL = process.env.CONTACT_TEAM_EMAIL || 'info@iting.cz';
-const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || 'CHJ Terminal <onboarding@resend.dev>';
+const TEAM_EMAIL = process.env.CONTACT_TEAM_EMAIL || 'josef.cipera@gmail.com';
+const FROM_EMAIL = 'onboarding@resend.dev';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {

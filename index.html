@@ -1561,7 +1561,12 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
-        }).catch(() => {});
+        }).then(r => r.json()).then(json => {
+          if (!json.ok) throw new Error('send failed');
+        }).catch(() => {
+          const errBlock = newBlock();
+          typeInBlock(errBlock, '> [ CHYBA: Zpráva se neposlala. Zkuste znovu nebo napište na info@iting.cz ]', 't-error', () => {});
+        });
         typeInBlock(finalBlock, '> [ STATUS: DATA_ODESLÁNA_DO_JÁDRA // SPOJENÍ_UKONČENO ]', 't-success', () => {
           setTimeout(glitch, 150);
         });

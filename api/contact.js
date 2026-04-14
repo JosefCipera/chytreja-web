@@ -36,26 +36,7 @@ export default async function handler(req, res) {
       `,
     });
 
-    // 2. Autoresponder to user
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: email,
-      subject: `[ STATUS: ZPRÁVA_PŘIJATA ] — Chytré já`,
-      html: `
-        <div style="font-family:monospace;background:#02040a;color:#e2e8f0;padding:2rem;max-width:500px;">
-          <p style="color:#06b6d4;margin:0 0 1.5rem;letter-spacing:0.1em;">
-            CHJ_CONTACT_TERMINAL v1.0
-          </p>
-          <p style="color:#888;">Ahoj ${name},</p>
-          <p style="color:#e2e8f0;margin:1rem 0;">
-            Tvoje zpráva dorazila do systému. Ozývám se zpět na tento e-mail — obvykle do 24 hodin.
-          </p>
-          <p style="color:#555;border-top:1px solid #1e293b;padding-top:1rem;margin-top:2rem;font-size:0.85em;">
-            Chytré já &nbsp;·&nbsp; <a href="https://iting.cz" style="color:#06b6d4;text-decoration:none;">iting.cz</a>
-          </p>
-        </div>
-      `,
-    });
+    // 2. Autoresponder — disabled until iting.cz domain verified in Resend
 
     return res.status(200).json({ ok: true });
 

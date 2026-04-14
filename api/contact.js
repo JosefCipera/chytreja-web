@@ -41,7 +41,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true });
 
   } catch (err) {
-    console.error('Contact email error:', err);
-    return res.status(500).json({ error: 'Failed to send' });
+    console.error('Contact email error:', JSON.stringify(err));
+    return res.status(500).json({ error: err?.message || 'Failed to send', detail: JSON.stringify(err) });
   }
 }
